@@ -1,4 +1,4 @@
-![Main Logo](images/text02.PNG 'Text')
+![text](images/text02.PNG 'Text')
 
 # Cheat Sheet | Attack Active-Directory
 
