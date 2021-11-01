@@ -20,7 +20,15 @@ Link: ![AD Module](https://github.com/samratashok/ADModule)
 
 - **With PowerView:**
 ```
-Get-NetUser                        #Get the list of users
-Get-NetUser -Username user01       #Enumeration on user "user01"
-Get-NetUser | select cn            
+Get-NetUser                                           #Get the list of users
+Get-NetUser -Username user01                          #Enumeration on user "user01"
+Get-NetUser | select cn                               #Get the list of users from cn common-name
+Get-NetUser | select name                             #Get the list of users from name
+```
+- **With AD Module:**
+```
+Get-ADUser -Filter *                                  #Get the list of users
+Get-ADUser -Filter * -Properties *                    #Get the list of users with properties
+Get-ADUser -Filter * -Properties * | select cn        #Get the list of users from cn common-name
+Get-ADUser -Filter * -Properties * | select name      #Get the list of users from name
 ```
