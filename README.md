@@ -1,6 +1,4 @@
-![text](images/text02.png 'Text')
-
-# Cheat Sheet | Attack Active-Directory
+![Title](images/text02.png 'Text')
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
