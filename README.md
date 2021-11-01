@@ -77,8 +77,9 @@ Get-ADPrincipalGroupMembership -Identity user01                            #Get 
 
 - **With PowerView:**
 ```
-Invoke-ShareFinder -Verbose                            #Find shares on hosts in the current domain                   
-Invoke-FileFinder -Verbose                             #Find sensitive files on computers in the current domain
-Get-NetFileServer                                      #Search file servers. Lot of users use to be logged in this kind of server
+Invoke-ShareFinder -Verbose                                             #Find shares on hosts in the current domain                   
+Invoke-FileFinder -Verbose                                              #Find sensitive files on computers in the current domain
+Get-NetFileServer                                                       #Search file servers. Lot of users use to be logged in this kind of server
+Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC –Verbose  #Find shares excluding standard, print and ipc.
 ```
 
