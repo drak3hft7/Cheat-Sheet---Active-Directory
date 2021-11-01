@@ -1,4 +1,4 @@
-# Cheat Sheet | Active-Directory
+# Cheat Sheet | Attack Active-Directory
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
@@ -13,3 +13,5 @@ Import-Module .\Microsoft.ActiveDirectory.Management.dll
 Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
 Link: ![AD Module](https://github.com/samratashok/ADModule)
+
+## Enumeration:
