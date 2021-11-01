@@ -34,4 +34,5 @@ Get-ADUser -Filter *                                  #Get the list of users
 Get-ADUser -Filter * -Properties *                    #Get the list of users with properties
 Get-ADUser -Filter * -Properties * | select cn        #Get the list of users from cn common-name
 Get-ADUser -Filter * -Properties * | select name      #Get the list of users from name
+Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}  #Displays when the password was set
 ```
