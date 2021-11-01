@@ -2,6 +2,8 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
+Updating....
+
 ## Using PowerView:
 ```
 . .\PowerView.ps1
