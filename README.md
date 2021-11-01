@@ -45,6 +45,7 @@ Get-NetComputer                                       #Get the list of computers
 Get-NetComputer -FullData                             #Get the list of computers in the current domain with complete data 
 Get-NetComputer -FullData | select operatingsystem    #Get the list of computers with their operating system
 Get-NetComputer -FullData | select name               #Get the list of computers with their name
+Get-NetComputer -Ping                                 #Send a ping to check if the computers are working
 ```
 - **With AD Module:**
 ```
