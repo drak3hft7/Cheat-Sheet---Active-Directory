@@ -52,3 +52,14 @@ Get-ADComputer -Filter * -Properties *                                          
 Get-ADComputer -Filter * -Properties OperatingSystem | select name,OperatingSystem   #Get the list of computers with their operating system
 Get-ADComputer -Filter * | select Name                                               #Get the list of computers with their name
 ```
+
+### Enumeration Groups and Members:
+
+- **With PowerView:**
+```
+Get-NetGroup                                          #Information about groups
+Get-NetGroup *Admin*                                  #Get all groups that contain the word "admin" in the group name 
+```
+- **With AD Module:**
+```
+```
