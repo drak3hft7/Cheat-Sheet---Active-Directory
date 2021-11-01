@@ -1,4 +1,4 @@
-![text](images/text02.PNG 'Text')
+![text](images/text02.png 'Text')
 
 # Cheat Sheet | Attack Active-Directory
 
