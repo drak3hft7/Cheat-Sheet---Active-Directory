@@ -9,4 +9,7 @@ This cheat sheet contains common enumeration and attack methods for Windows Acti
 Link: ![PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
 ## Using AD Module
 ```
+Import-Module .\Microsoft.ActiveDirectory.Management.dll
+Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
+Link: ![AD Module](https://github.com/samratashok/ADModule)
