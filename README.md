@@ -61,12 +61,22 @@ Get-ADComputer -Filter * | select Name                                          
 Get-NetGroup                                                               #Information about groups
 Get-NetGroup *Admin*                                                       #Get all groups that contain the word "admin" in the group name 
 Get-NetGroupMember -GroupName "Domain Admins" -Recurse                     #Get all members of the "Domain Admins" group
-Get-NetGroupMember -GroupName "Enterprise Admins" –Domain domainxxx.local  #Query the root domain as the "Enterprise Admins" group exists only in the root of a forest.
+Get-NetGroupMember -GroupName "Enterprise Admins" –Domain domainxxx.local  #Query the root domain as the "Enterprise Admins" group exists only in the root of a forest
 Get-NetGroup -UserName "user01"                                            #Get group membership for "user01"
 ```
 - **With AD Module:**
 ```
-Get-ADGroup -Filter 'Name -like "*admin*"' | select Name #Get all groups that contain the word "admin" in the group name
-Get-ADGroupMember -Identity "Domain Admins" -Recursive   #Get all members of the "Domain Admins" group
-Get-ADPrincipalGroupMembership -Identity user01          #Get group membership for "user01"
+Get-ADGroup -Filter 'Name -like "*admin*"' | select Name                   #Get all groups that contain the word "admin" in the group name
+Get-ADGroupMember -Identity "Domain Admins" -Recursive                     #Get all members of the "Domain Admins" group
+Get-ADPrincipalGroupMembership -Identity user01                            #Get group membership for "user01"
 ```
+
+### Enumeration Shares:
+
+- **With PowerView:**
+```
+Invoke-ShareFinder -Verbose                            #Find shares on hosts in the current domain                   
+Invoke-FileFinder -Verbose                             #Find sensitive files on computers in the current domain
+Get-NetFileServer                                      #Search file servers. Lot of users use to be logged in this kind of server
+```
+
