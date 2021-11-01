@@ -24,6 +24,9 @@ Get-NetUser                                           #Get the list of users
 Get-NetUser -Username user01                          #Enumeration on user "user01"
 Get-NetUser | select cn                               #Get the list of users from cn common-name
 Get-NetUser | select name                             #Get the list of users from name
+Get-UserProperty                                      #Lists all properties
+Get-UserProperty –Properties pwdlastset               #Displays when the password was set
+Get-UserProperty -Properties whencreated              #Displays when the accounts were created
 ```
 - **With AD Module:**
 ```
