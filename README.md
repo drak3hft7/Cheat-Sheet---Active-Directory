@@ -57,9 +57,14 @@ Get-ADComputer -Filter * | select Name                                          
 
 - **With PowerView:**
 ```
-Get-NetGroup                                          #Information about groups
-Get-NetGroup *Admin*                                  #Get all groups that contain the word "admin" in the group name 
+Get-NetGroup                                             #Information about groups
+Get-NetGroup *Admin*                                     #Get all groups that contain the word "admin" in the group name 
+Get-NetGroupMember -GroupName "Domain Admins" -Recurse   #Get all members of the "Domain Admins" group
+Get-NetGroup -UserName "user01"                          #Get group membership for "user01"
 ```
 - **With AD Module:**
 ```
+Get-ADGroup -Filter 'Name -like "*admin*"' | select Name #Get all groups that contain the word "admin" in the group name
+Get-ADGroupMember -Identity "Domain Admins" -Recursive   #Get all members of the "Domain Admins" group
+Get-ADPrincipalGroupMembership -Identity user01          #Get group membership for "user01"
 ```
