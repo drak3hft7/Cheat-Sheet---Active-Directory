@@ -30,9 +30,25 @@ Get-UserProperty -Properties whencreated              #Displays when the account
 ```
 - **With AD Module:**
 ```
-Get-ADUser -Filter *                                  #Get the list of users
-Get-ADUser -Filter * -Properties *                    #Get the list of users with properties
-Get-ADUser -Filter * -Properties * | select cn        #Get the list of users from cn common-name
-Get-ADUser -Filter * -Properties * | select name      #Get the list of users from name
+Get-ADUser -Filter *                                                                                      #Get the list of users
+Get-ADUser -Filter * -Properties *                                                                        #Get the list of users with properties
+Get-ADUser -Filter * -Properties * | select cn                                                            #Get the list of users from cn common-name
+Get-ADUser -Filter * -Properties * | select name                                                          #Get the list of users from name
 Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}  #Displays when the password was set
+```
+
+### Enumeration Computers:
+
+- **With PowerView:**
+```
+Get-NetComputer                                       #Get the list of computers in the current domain
+Get-NetComputer -FullData                             #Get the list of computers in the current domain with complete data 
+Get-NetComputer -FullData | select operatingsystem    #Get the list of computers with their operating system
+Get-NetComputer -FullData | select name               #Get the list of computers with their name
+```
+- **With AD Module:**
+```
+Get-ADComputer -Filter * -Properties *                                               #Get the list of computers in the current domain with complete data 
+Get-ADComputer -Filter * -Properties OperatingSystem | select name,OperatingSystem   #Get the list of computers with their operating system
+Get-ADComputer -Filter * | select Name                                               #Get the list of computers with their name
 ```
