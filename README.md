@@ -15,3 +15,12 @@ Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 Link: ![AD Module](https://github.com/samratashok/ADModule)
 
 ## Enumeration:
+
+### Enumeration Users:
+
+- **With PowerView:**
+```
+Get-NetUser                        #Get the list of users
+Get-NetUser -Username user01       #Enumeration on user "user01"
+Get-NetUser | select cn            
+```
