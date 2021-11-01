@@ -1,3 +1,5 @@
+![Main Logo](images/text02.PNG 'Text')
+
 # Cheat Sheet | Attack Active-Directory
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
