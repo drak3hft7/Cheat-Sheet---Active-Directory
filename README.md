@@ -84,3 +84,17 @@ Get-NetFileServer                                                       #Search 
 Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC –Verbose  #Find shares excluding standard, print and ipc.
 ```
 
+### Enumeration OUI and GPO:
+
+- **With PowerView:**
+```
+Get-NetOU                                                                  #Get the organizational units in a domain
+Get-NetOU -FullData                                                        #Get the organizational units in a domain with full data 
+Get-NetOU "ouiexample" | %{Get-NetComputer -ADSpath $_}                    #Get all computers from "ouiexample". Ouiexample --> organizational Units
+Get-NetGPO                                                                 #Retrieve the list of GPOs present in the current domain
+Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                       #Enumerate GPO applied on the example OU
+```
+- **With AD Module:**
+```
+Get-ADOrganizationalUnit -Filter * -Properties *                           #Get the organizational units in a domain
+```
