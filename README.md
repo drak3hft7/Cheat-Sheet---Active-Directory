@@ -98,3 +98,12 @@ Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                       #Enum
 ```
 Get-ADOrganizationalUnit -Filter * -Properties *                           #Get the organizational units in a domain
 ```
+
+### Enumeration ACL:
+
+- **With PowerView:**
+```
+Get-ObjectAcl -SamAccountName "users" -ResolveGUIDs                        #Enumerates the ACLs for the users group
+Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs                #Enumerates the ACLs for the Domain Admins group
+Get-ObjectAcl -ADSprefix 'CN=Administrator,CN=Users' -Verbose              #Get the acl associated with a specific prefix
+```
