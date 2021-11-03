@@ -88,24 +88,25 @@ Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC –Verbose  #Find 
 
 - **With PowerView:**
 ```
-Get-NetOU                                                                  #Get the organizational units in a domain
-Get-NetOU -FullData                                                        #Get the organizational units in a domain with full data 
-Get-NetOU "ouiexample" | %{Get-NetComputer -ADSpath $_}                    #Get all computers from "ouiexample". Ouiexample --> organizational Units
-Get-NetGPO                                                                 #Retrieve the list of GPOs present in the current domain
-Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                       #Enumerate GPO applied on the example OU
+Get-NetOU                                                                   #Get the organizational units in a domain
+Get-NetOU -FullData                                                         #Get the organizational units in a domain with full data 
+Get-NetOU "ouiexample" | %{Get-NetComputer -ADSpath $_}                     #Get all computers from "ouiexample". Ouiexample --> organizational Units
+Get-NetGPO                                                                  #Retrieve the list of GPOs present in the current domain
+Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                        #Enumerate GPO applied on the example OU
 ```
 - **With AD Module:**
 ```
-Get-ADOrganizationalUnit -Filter * -Properties *                           #Get the organizational units in a domain
+Get-ADOrganizationalUnit -Filter * -Properties *                            #Get the organizational units in a domain
 ```
 
 ### Enumeration ACL:
 
 - **With PowerView:**
 ```
-Get-ObjectAcl -SamAccountName "users" -ResolveGUIDs                        #Enumerates the ACLs for the users group
-Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs                #Enumerates the ACLs for the Domain Admins group
-Get-ObjectAcl -ADSprefix 'CN=Administrator,CN=Users' -Verbose              #Get the acl associated with a specific prefix
-Invoke-ACLScanner -ResolveGUIDs                                            #Find interesting ACLs
-Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}    #check for modify rights/permissions for the user
+Get-ObjectAcl -SamAccountName "users" -ResolveGUIDs                         #Enumerates the ACLs for the users group
+Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs                 #Enumerates the ACLs for the Domain Admins group
+Get-ObjectAcl -ADSprefix 'CN=Administrator,CN=Users' -Verbose               #Get the acl associated with a specific prefix
+Invoke-ACLScanner -ResolveGUIDs                                             #Find interesting ACLs
+Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}     #check for modify rights/permissions for the user group
+Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "RDPusers"} #check for modify rights/permissions for the RDPUsers group
 ```
