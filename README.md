@@ -106,4 +106,6 @@ Get-ADOrganizationalUnit -Filter * -Properties *                           #Get 
 Get-ObjectAcl -SamAccountName "users" -ResolveGUIDs                        #Enumerates the ACLs for the users group
 Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs                #Enumerates the ACLs for the Domain Admins group
 Get-ObjectAcl -ADSprefix 'CN=Administrator,CN=Users' -Verbose              #Get the acl associated with a specific prefix
+Invoke-ACLScanner -ResolveGUIDs                                            #Find interesting ACLs
+Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}    #check for modify rights/permissions for the user
 ```
