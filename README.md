@@ -137,6 +137,10 @@ Get-NetForestDomain -Forest corporation.local                                   
 Get-NetForestDomain -Verbose | Get-NetDomainTrust                                  #Maps all trusts
 Get-NetForestDomain -Verbose | Get-NetDomainTrust | ?{$_.TrustType -eq 'External'} #Maps only external trusts
 ```
+**Example:**
+
+![Main Logo](images/Example_trust02.PNG 'Example02')
+
 - **With AD Module:**
 ```
 (Get-ADForest).Domains                                                             #Get all domains in the current forest
