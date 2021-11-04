@@ -118,7 +118,7 @@ Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "RDPusers"} #che
 Get-NetDomainTrust                                                          #Get the list of all trusts within the current domain
 Get-NetDomainTrust -Domain us.domain.corporation.local                      #Get the list of all trusts within the indicated domain
 ```
-**Example**
+**Example:**
 
 ![Main Logo](images/Example_trust01.PNG 'Example01')
 
@@ -126,4 +126,16 @@ Get-NetDomainTrust -Domain us.domain.corporation.local                      #Get
 ```
 Get-ADTrust -Filter *                                                       #Get the list of all trusts within the current domain
 Get-ADTrust -Identity us.domain.corporation.local                           #Get the list of all trusts within the indicated domain
+```
+
+### Domain Enumeration Forest:
+
+- **With PowerView:**
+```
+Get-NetForestDomain                                                         #Get all domains in the current forest
+Get-NetForestDomain -Forest corporation.local                               #Get all domains in the current forest
+```
+- **With AD Module:**
+```
+(Get-ADForest).Domains                                                      #Get all domains in the current forest
 ```
