@@ -110,3 +110,16 @@ Invoke-ACLScanner -ResolveGUIDs                                             #Fin
 Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}     #check for modify rights/permissions for the user group
 Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "RDPusers"} #check for modify rights/permissions for the RDPUsers group
 ```
+
+### Domain Trust mapping:
+
+- **With PowerView:**
+```
+Get-NetDomainTrust                                                          #Get the list of all trusts within the current domain
+Get-NetDomainTrust -Domain us.domain.corporation.local                      #Get the list of all trusts within the indicated domain
+```
+- **With AD Module:**
+```
+Get-ADTrust -Filter *                                                       #Get the list of all trusts within the current domain
+Get-ADTrust -Identity us.domain.corporation.local                           #Get the list of all trusts within the indicated domain
+```
