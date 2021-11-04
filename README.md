@@ -119,6 +119,7 @@ Get-NetDomainTrust                                                          #Get
 Get-NetDomainTrust -Domain us.domain.corporation.local                      #Get the list of all trusts within the indicated domain
 ```
 **Example**
+
 ![Main Logo](images/Example_trust01.PNG 'Example01')
 
 - **With AD Module:**
