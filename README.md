@@ -143,5 +143,6 @@ Get-NetForestDomain -Verbose | Get-NetDomainTrust | ?{$_.TrustType -eq 'External
 
 - **With AD Module:**
 ```
-(Get-ADForest).Domains                                                             #Get all domains in the current forest
+(Get-ADForest).Domains                                                                                                 #Get all domains in the current forest
+(Get-ADForest).Domains | %{Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)' -Server $_} #Maps only external trusts
 ```
