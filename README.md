@@ -147,6 +147,13 @@ Get-NetForestDomain -Verbose | Get-NetDomainTrust | ?{$_.TrustType -eq 'External
 (Get-ADForest).Domains | %{Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)' -Server $_} #Maps only external trusts
 ```
 
+### Domain Enumeration User Hunting:
+
+- **With PowerView:**
+```
+Find-LocalAdminAccess -Verbose                                    #Find all machines on the current domain where the current user has local admin access
+```
+
 # Local Privilege Escalation:
 
 ## Using PowerUp:
@@ -164,8 +171,6 @@ Link: ![BeRoot](https://github.com/AlessandroZ/BeRoot/tree/master/Windows)
 . .\privesc.ps1
 ```
 Link: ![PrivEsc](https://github.com/enjoiz/Privesc/blob/master/privesc.ps1)
-
-### Enumeration Users:
 
 - **With PowerUp:**
 ```
