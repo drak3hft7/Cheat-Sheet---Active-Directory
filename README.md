@@ -152,6 +152,8 @@ Get-NetForestDomain -Verbose | Get-NetDomainTrust | ?{$_.TrustType -eq 'External
 - **With PowerView:**
 ```
 Find-LocalAdminAccess -Verbose                                    #Find all machines on the current domain where the current user has local admin access
+Invoke-UserHunter                                                 #Looks for machines where a domain administrator is logged on
+Invoke-UserHunter -CheckAccess                                    #Confirm access to the machine as an administrator
 ```
 
 # Local Privilege Escalation:
