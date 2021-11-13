@@ -39,6 +39,24 @@ Get-ADUser -Filter * -Properties * | select cn                                  
 Get-ADUser -Filter * -Properties * | select name                                                          #Get the list of users from name
 Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}  #Displays when the password was set
 ```
+### Enumeration Domain Admins:
+
+- **With PowerView:**
+```
+Get-NetDomain                                         #Get the current domain
+Get-NetDomain -Domain corporate.local                 #Get item from another domain
+Get-DomainSID                                         #Get the domain SID for the current domain
+Get-DomainPolicy                                      #Get domain policy for current domain
+Get-NetGroup -GroupName "Domain Admins" -FullData     #See Attributes of the Domain Admins Group
+Get-NetGroupMember -GroupName "Domain Admins"         #Get Members of the Domain Admins group:
+```
+- **With AD Module:**
+```
+Get-ADDomain                                          #Get the current domain
+Get-ADDomain -Identity corporate.local                #Get item from another domain
+(Get-ADDomain).DomainSID                              #Get the domain SID for the current domain
+(Get-DomainPolicy)."system access"                    #Get domain policy for current domain
+```
 
 ### Enumeration Computers:
 
