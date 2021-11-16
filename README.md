@@ -81,7 +81,7 @@ Get-NetGroup -GroupName "Domain Admins" -FullData
 Get-NetGroupMember -GroupName "Domain Admins"         
 ```
 - **With AD Module:**
-```
+```powershell
 # Get the current domain
 Get-ADDomain                                         
 # Get item from another domain
@@ -95,80 +95,114 @@ Get-ADDomain -Identity corporate.local
 ### Computers Enumeration:
 
 - **With PowerView:**
-```
-Get-NetComputer                                       #Get the list of computers in the current domain
-Get-NetComputer -FullData                             #Get the list of computers in the current domain with complete data 
-Get-NetComputer -FullData | select operatingsystem    #Get the list of computers with their operating system
-Get-NetComputer -FullData | select name               #Get the list of computers with their name
-Get-NetComputer -Ping                                 #Send a ping to check if the computers are working
+```powershell
+# Get the list of computers in the current domain
+Get-NetComputer                                       
+# Get the list of computers in the current domain with complete data 
+Get-NetComputer -FullData                             
+# Get the list of computers grabbing their operating system
+Get-NetComputer -FullData | select operatingsystem    
+# Get the list of computers grabbing their name
+Get-NetComputer -FullData | select name               
+# Send a ping to check if the computers are alive (They could be alive but still not responding to any ICMP echo request)
+Get-NetComputer -Ping                                 
 ```
 - **With AD Module:**
-```
-Get-ADComputer -Filter * -Properties *                                               #Get the list of computers in the current domain with complete data 
-Get-ADComputer -Filter * -Properties OperatingSystem | select name,OperatingSystem   #Get the list of computers with their operating system
-Get-ADComputer -Filter * | select Name                                               #Get the list of computers with their name
+```powershell
+# Get the list of computers in the current domain with complete data 
+Get-ADComputer -Filter * -Properties *                                               
+# Get the list of computers grabbing their name and the operating system
+Get-ADComputer -Filter * -Properties OperatingSystem | select name,OperatingSystem   
+# Get the list of computers grabbing their name
+Get-ADComputer -Filter * | select Name                                               
 ```
 
-### Enumeration Groups and Members:
+### Groups and Members Enumeration:
 
 - **With PowerView:**
-```
-Get-NetGroup                                                               #Information about groups
-Get-NetGroup *Admin*                                                       #Get all groups that contain the word "admin" in the group name 
-Get-NetGroupMember -GroupName "Domain Admins" -Recurse                     #Get all members of the "Domain Admins" group
-Get-NetGroupMember -GroupName "Enterprise Admins" –Domain domainxxx.local  #Query the root domain as the "Enterprise Admins" group exists only in the root of a forest
-Get-NetGroup -UserName "user01"                                            #Get group membership for "user01"
+```powershell
+# Information about groups
+Get-NetGroup
+# Get all groups that contain the word "admin" in the group name 
+Get-NetGroup *Admin*                                                       
+# Get all members of the "Domain Admins" group
+Get-NetGroupMember -GroupName "Domain Admins" -Recurse                     
+# Query the root domain as the "Enterprise Admins" group exists only in the root of a forest
+Get-NetGroupMember -GroupName "Enterprise Admins" –Domain domainxxx.local  
+# Get group membership for "user01"
+Get-NetGroup -UserName "user01"                                            
 ```
 - **With AD Module:**
-```
-Get-ADGroup -Filter 'Name -like "*admin*"' | select Name                   #Get all groups that contain the word "admin" in the group name
-Get-ADGroupMember -Identity "Domain Admins" -Recursive                     #Get all members of the "Domain Admins" group
-Get-ADPrincipalGroupMembership -Identity user01                            #Get group membership for "user01"
+```powershell
+# Get all groups that contain the word "admin" in the group name
+Get-ADGroup -Filter 'Name -like "*admin*"' | select Name                   
+# Get all members of the "Domain Admins" group
+Get-ADGroupMember -Identity "Domain Admins" -Recursive                     
+# Get group membership for "user01"
+Get-ADPrincipalGroupMembership -Identity user01                            
 ```
 
 ### Enumeration Shares:
 
 - **With PowerView:**
-```
-Invoke-ShareFinder -Verbose                                             #Find shares on hosts in the current domain                   
-Invoke-FileFinder -Verbose                                              #Find sensitive files on computers in the current domain
-Get-NetFileServer                                                       #Search file servers. Lot of users use to be logged in this kind of server
-Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC –Verbose  #Find shares excluding standard, print and ipc.
+```powershell
+# Find shares on hosts in the current domain                   
+Invoke-ShareFinder -Verbose                                             
+# Find sensitive files on computers in the current domain
+Invoke-FileFinder -Verbose                                              
+# Search file servers. Lot of users use to be logged in this kind of server
+Get-NetFileServer                                                       
+# Find shares excluding standard, print and ipc.
+Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC –Verbose
 ```
 
 ### Enumeration OUI and GPO:
 
 - **With PowerView:**
-```
-Get-NetOU                                                                   #Get the organizational units in a domain
-Get-NetOU -FullData                                                         #Get the organizational units in a domain with full data 
-Get-NetOU "ouiexample" | %{Get-NetComputer -ADSpath $_}                     #Get all computers from "ouiexample". Ouiexample --> organizational Units
-Get-NetGPO                                                                  #Retrieve the list of GPOs present in the current domain
-Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                        #Enumerate GPO applied on the example OU
+```powershell
+# Get the organizational units in a domain
+Get-NetOU                                                                   
+# Get the organizational units in a domain with full data
+Get-NetOU -FullData                                                         
+# Get all computers from "ouiexample". Ouiexample --> organizational Units
+Get-NetOU "ouiexample" | %{Get-NetComputer -ADSpath $_}                     
+# Retrieve the list of GPOs present in the current domain
+Get-NetGPO                                                                  
+# Enumerate GPO applied on the example OU
+Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                        
 ```
 - **With AD Module:**
 ```
-Get-ADOrganizationalUnit -Filter * -Properties *                            #Get the organizational units in a domain
+# Get the organizational units in a domain
+Get-ADOrganizationalUnit -Filter * -Properties *                            
 ```
 
 ### Enumeration ACL:
 
 - **With PowerView:**
 ```
-Get-ObjectAcl -SamAccountName "users" -ResolveGUIDs                         #Enumerates the ACLs for the users group
-Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs                 #Enumerates the ACLs for the Domain Admins group
-Get-ObjectAcl -ADSprefix 'CN=Administrator,CN=Users' -Verbose               #Get the acl associated with a specific prefix
-Invoke-ACLScanner -ResolveGUIDs                                             #Find interesting ACLs
-Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}     #check for modify rights/permissions for the user group
-Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "RDPusers"} #check for modify rights/permissions for the RDPUsers group
+# Enumerates the ACLs for the users group
+Get-ObjectAcl -SamAccountName "users" -ResolveGUIDs                         
+# Enumerates the ACLs for the Domain Admins group
+Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs                 
+# Get the acl associated with a specific prefix
+Get-ObjectAcl -ADSprefix 'CN=Administrator,CN=Users' -Verbose               
+# Find interesting ACLs
+Invoke-ACLScanner -ResolveGUIDs                                             
+# Check for modify rights/permissions for the user group
+Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}     
+# Check for modify rights/permissions for the RDPUsers group
+Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "RDPusers"} 
 ```
 
 ### Domain Trust mapping:
 
 - **With PowerView:**
 ```
-Get-NetDomainTrust                                                          #Get the list of all trusts within the current domain
-Get-NetDomainTrust -Domain us.domain.corporation.local                      #Get the list of all trusts within the indicated domain              
+# Get the list of all trusts within the current domain
+Get-NetDomainTrust                                                          
+# Get the list of all trusts within the indicated domain
+Get-NetDomainTrust -Domain us.domain.corporation.local                                    
 ```
 **Example:**
 
