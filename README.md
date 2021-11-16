@@ -9,8 +9,21 @@ Updating....
   -  [Users Enumeration](#users-enumeration)
   -  [Domain Admins Enumeration](#domain-admins-enumeration)
   -  [Computers Enumeration](#computers-enumeration)
-- []()
-
+  -  [Groups and Members Enumeration](#groups-and-members-enumeration)
+  -  [Shares Enumeration](#shares-enumeration) 
+  -  [OUI and GPO Enumeration](#oui-and-gpo-enumeration) 
+  -  [ACLs Enumeration](#acls-enumeration)
+  -  [Domain Trust Mapping](#domain-trust-mapping)
+  -  [Domain Forest Enumeration](#domain-forest-enumeration)
+  -  [User Hunting](#user-hunting)
+-  [Local Privilege Escalation](#local-privilege-escalation)
+-  [Lateral Movement](#lateral-movement)
+-  [Persistence](#persistence)  
+  - [Golden Ticket](#golden-ticket)  
+  - [Silver Ticket](#silver-ticket)
+  - [Skeleton Key](#skeleton-key)
+  - [DCSync](#dcsync)
+- [Privilege Escalation - Kerberoast](#privilege-escalation---kerberoast)
 
 ## Pre-requisites
 ### Using PowerView:
@@ -142,7 +155,7 @@ Get-ADGroupMember -Identity "Domain Admins" -Recursive
 Get-ADPrincipalGroupMembership -Identity user01                            
 ```
 
-### Enumeration Shares
+### Shares Enumeration
 
 - **With PowerView:**
 ```powershell
@@ -156,7 +169,7 @@ Get-NetFileServer
 Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC –Verbose
 ```
 
-### Enumeration OUI and GPO
+### OUI and GPO Enumeration
 
 - **With PowerView:**
 ```powershell
@@ -216,7 +229,7 @@ Get-ADTrust -Filter *
 Get-ADTrust -Identity us.domain.corporation.local                           
 ```
 
-### Domain Enumeration Forest
+### Domain Forest Enumeration
 
 - **With PowerView:**
 ```powershell
@@ -241,7 +254,7 @@ Get-NetForestDomain -Verbose | Get-NetDomainTrust | ?{$_.TrustType -eq 'External
 (Get-ADForest).Domains | %{Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)' -Server $_} 
 ```
 
-### Domain Enumeration User Hunting
+### User Hunting
 
 - **With PowerView:**
 ```powershell
@@ -253,7 +266,7 @@ Invoke-UserHunter
 Invoke-UserHunter -CheckAccess                                    
 ```
 
-## Local Privilege Escalation:
+## Local Privilege Escalation
 
 ### Using PowerUp:
 ```powershell
