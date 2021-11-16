@@ -3,13 +3,22 @@
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
 Updating....
+## TOC
+- [Pre-requisites](#pre-requisites)
+- [Enumeration](#enumeration)
+  -  [Users Enumeration](#users-enumeration)
+  -  [Domain Admins Enumeration](#domain-admins-enumeration)
+  -  [Computers Enumeration](#computers-enumeration)
+- []()
 
-## Using PowerView:
+
+## Pre-requisites
+### Using PowerView:
 ```powershell
 . .\PowerView.ps1
 ```
 Link: [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
-## Using AD Module
+### Using AD Module
 ```powershell
 Import-Module .\Microsoft.ActiveDirectory.Management.dll
 Import-Module .\ActiveDirectory\ActiveDirectory.psd1
@@ -54,26 +63,36 @@ Get-ADUser -Filter * -Properties * | select name
 # Displays when the password was set
 Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}
 ```
-### Domain Admins:
+### Domain Admins Enumeration:
 
 - **With PowerView:**
-```
-Get-NetDomain                                         #Get the current domain
-Get-NetDomain -Domain corporate.local                 #Get item from another domain
-Get-DomainSID                                         #Get the domain SID for the current domain
-Get-DomainPolicy                                      #Get domain policy for current domain
-Get-NetGroup -GroupName "Domain Admins" -FullData     #See Attributes of the Domain Admins Group
-Get-NetGroupMember -GroupName "Domain Admins"         #Get Members of the Domain Admins group:
+```powershell
+# Get the current domain
+Get-NetDomain                                         
+# Get items from another domain
+Get-NetDomain -Domain corporate.local                 
+# Get the domain SID for the current domain
+Get-DomainSID                                         
+# Get domain policy for current domain
+Get-DomainPolicy                                      
+# See Attributes of the Domain Admins Group
+Get-NetGroup -GroupName "Domain Admins" -FullData     
+# Get Members of the Domain Admins group:
+Get-NetGroupMember -GroupName "Domain Admins"         
 ```
 - **With AD Module:**
 ```
-Get-ADDomain                                          #Get the current domain
-Get-ADDomain -Identity corporate.local                #Get item from another domain
-(Get-ADDomain).DomainSID                              #Get the domain SID for the current domain
-(Get-DomainPolicy)."system access"                    #Get domain policy for current domain
+# Get the current domain
+Get-ADDomain                                         
+# Get item from another domain
+Get-ADDomain -Identity corporate.local                
+# Get the domain SID for the current domain
+(Get-ADDomain).DomainSID                              
+# Get domain policy for current domain
+(Get-DomainPolicy)."system access"                    
 ```
 
-### Enumeration Computers:
+### Computers Enumeration:
 
 - **With PowerView:**
 ```
