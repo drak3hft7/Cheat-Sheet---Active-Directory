@@ -5,41 +5,56 @@ This cheat sheet contains common enumeration and attack methods for Windows Acti
 Updating....
 
 ## Using PowerView:
-```
+```powershell
 . .\PowerView.ps1
 ```
-Link: ![PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
+Link: [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
 ## Using AD Module
-```
+```powershell
 Import-Module .\Microsoft.ActiveDirectory.Management.dll
 Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
-Link: ![AD Module](https://github.com/samratashok/ADModule)
+Link: [AD Module](https://github.com/samratashok/ADModule)
 
 # Enumeration:
 
-### Enumeration Users:
+### Users Enumeration:
 
-- **With PowerView:**
+- **With PowerView**:
+```powershell
+# Get the list of users
+Get-NetUser
+# Fitler by username
+Get-NetUser -Username user01                          
+# Grab the cn (common-name) from the list of users
+Get-NetUser | select cn                           
+# Grab the name from the list of users
+Get-NetUser | select name
+
+# List all properties
+Get-UserProperty                                      
+# Display when the passwords were set last time
+Get-UserProperty –Properties pwdlastset               
+# Display when the accounts were created
+Get-UserProperty -Properties whencreated              
 ```
-Get-NetUser                                           #Get the list of users
-Get-NetUser -Username user01                          #Enumeration on user "user01"
-Get-NetUser | select cn                               #Get the list of users from cn common-name
-Get-NetUser | select name                             #Get the list of users from name
-Get-UserProperty                                      #Lists all properties
-Get-UserProperty –Properties pwdlastset               #Displays when the password was set
-Get-UserProperty -Properties whencreated              #Displays when the accounts were created
+- **With AD Module**:
+```powershell
+# Get the list of users
+Get-ADUser -Filter *
+
+# Get the list of users with properties
+Get-ADUser -Filter * -Properties *                                                                        
+# List samaccountname and description for users
+Get-ADUser -Filter * -Properties * | select Samaccountname,Description                                    
+# Get the list of users from cn common-name
+Get-ADUser -Filter * -Properties * | select cn                                                            
+# Get the list of users from name
+Get-ADUser -Filter * -Properties * | select name                                                          
+# Displays when the password was set
+Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}
 ```
-- **With AD Module:**
-```
-Get-ADUser -Filter *                                                                                      #Get the list of users
-Get-ADUser -Filter * -Properties *                                                                        #Get the list of users with properties
-Get-ADUser -Filter * -Properties * | select Samaccountname,Description                                    #List samaccountname and description for users
-Get-ADUser -Filter * -Properties * | select cn                                                            #Get the list of users from cn common-name
-Get-ADUser -Filter * -Properties * | select name                                                          #Get the list of users from name
-Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}  #Displays when the password was set
-```
-### Enumeration Domain Admins:
+### Domain Admins:
 
 - **With PowerView:**
 ```
