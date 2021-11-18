@@ -268,7 +268,7 @@ Invoke-UserHunter
 Invoke-UserHunter -CheckAccess                                    
 ```
 
-## Local Privilege Escalation
+# Local Privilege Escalation
 
 ### Using PowerUp:
 ```powershell
@@ -305,7 +305,7 @@ Invoke-ServiceAbuse -Name 'software_xxx' -UserName 'corporate\student01'
 Invoke-Privesc                                        
 ```
 
-## Lateral Movement
+# Lateral Movement
 
 - **Powershell Remoting:**
 ```powershell
