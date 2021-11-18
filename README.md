@@ -25,8 +25,8 @@ Last update: **18 Nov 2021**
   -  [DCSync](#dcsync)
 - [Privilege Escalation](#privilege-escalation)
   -  [Kerberoast](#kerberoast)
-  -  [Targeted Kerberoasting AS REPs](targeted-Kerberoasting-AS-REPs)
-  -  [Targeted Kerberoasting Set SPN](targeted-Kerberoasting-set-spn)
+  -  [Targeted Kerberoasting AS REPs](#targeted-Kerberoasting-AS-REPs)
+  -  [Targeted Kerberoasting Set SPN](#targeted-Kerberoasting-set-spn)
 
 ## Pre-requisites
 ### Using PowerView:
