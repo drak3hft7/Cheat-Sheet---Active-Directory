@@ -23,9 +23,9 @@ Updating....
   - [Silver Ticket](#silver-ticket)
   - [Skeleton Key](#skeleton-key)
   - [DCSync](#dcsync)
-- [Privilege Escalation](#privilege escalation)
-  - [Kerberoast](#kerberoast)
-  - [Targeted Kerberoasting AS REPs](targeted Kerberoasting AS REPs)
+- [Privilege Escalation](#privilege-escalation)
+  -  [Kerberoast](#kerberoast)
+  -  [Targeted Kerberoasting AS REPs](targeted-Kerberoasting-AS-REPs)
 
 ## Pre-requisites
 ### Using PowerView:
