@@ -20,7 +20,6 @@ Last update: **18 Nov 2021**
 -  [Lateral Movement](#lateral-movement)
 -  [Persistence](#persistence)
   -  [Golden Ticket](#golden-ticket)
--  [Golden Ticket](#golden-ticket)  
   -  [Silver Ticket](#silver-ticket)
   -  [Skeleton Key](#skeleton-key)
   -  [DCSync](#dcsync)
