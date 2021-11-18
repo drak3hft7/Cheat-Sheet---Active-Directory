@@ -39,7 +39,7 @@ Link: [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Rec
 ```powershell
 . .\PowerView_dev.ps1
 ```
-Link: [PowerView Dev(https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
+Link: [PowerView Dev](https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
 
 ### Using AD Module
 ```powershell
