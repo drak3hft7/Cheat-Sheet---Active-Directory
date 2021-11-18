@@ -16,6 +16,7 @@ Last update: **18 Nov 2021**
   -  [Domain Trust Mapping](#domain-trust-mapping)
   -  [Domain Forest Enumeration](#domain-forest-enumeration)
   -  [User Hunting](#user-hunting)
+  -  [Golden Ticket](#golden-ticket)
 -  [Local Privilege Escalation](#local-privilege-escalation)
 -  [Lateral Movement](#lateral-movement)
 -  [Persistence](#persistence)
