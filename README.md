@@ -34,6 +34,13 @@ Updating....
 . .\PowerView.ps1
 ```
 Link: [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
+
+### Using PowerView dev:
+```powershell
+. .\PowerView_dev.ps1
+```
+Link: [PowerView Dev(https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
+
 ### Using AD Module
 ```powershell
 Import-Module .\Microsoft.ActiveDirectory.Management.dll
