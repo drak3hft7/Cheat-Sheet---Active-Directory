@@ -467,12 +467,18 @@ python.exe .\kerberoast\tgsrepcrack.py .\kerberoast\wordlists.txt '.\3-40a10000-
 
 ### Kerberos Delegation
 
-#### Unconstrained Delegation
+### Unconstrained Delegation
 
 **1. With Powerview:**
 ```powershell
 # Search for domain computers with unconstrained delegation enabled
 Get-NetComputer -UnConstrained
 ```
+**2. With AD Module:**
+```powershell
+# Search for domain computers with unconstrained delegation enabled
+Get-ADComputer -Filter {TrustedForDelegation -eq $True}
+Get-ADUser -Filter {TrustedForDelegation -eq $True}
+```
 
-#### Constrained Delegation
+### Constrained Delegation
