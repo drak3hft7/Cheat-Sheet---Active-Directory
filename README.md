@@ -466,4 +466,4 @@ python.exe .\kerberoast\tgsrepcrack.py .\kerberoast\wordlists.txt '.\3-40a10000-
 
 ### Kerberos Delegation
 
-## Unconstrained Delegation
+#### Unconstrained Delegation
