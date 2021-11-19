@@ -29,6 +29,7 @@ Last update: **19 Nov 2021**
   -  [Targeted Kerberoasting Set SPN](#targeted-Kerberoasting-set-spn)
   -  [Kerberos Delegation](#kerberoast-delegation)
      -  [Unconstrained Delegation](#unconstrained-delegation)
+        -  [Printer Bug](#printer-bug)
      -  [Constrained Delegation](#constrained-delegation)
 
 ## Pre-requisites
@@ -484,5 +485,7 @@ Get-NetComputer -Unconstrained | select -ExpandProperty dnshostname
 Get-ADComputer -Filter {TrustedForDelegation -eq $True}
 Get-ADUser -Filter {TrustedForDelegation -eq $True}
 ```
+#### Printer Bug
+
 
 ### Constrained Delegation
