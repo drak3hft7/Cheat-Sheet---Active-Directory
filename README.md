@@ -473,6 +473,10 @@ python.exe .\kerberoast\tgsrepcrack.py .\kerberoast\wordlists.txt '.\3-40a10000-
 ```powershell
 # Search for domain computers with unconstrained delegation enabled
 Get-NetComputer -UnConstrained
+# Search for domain computers with unconstrained delegation enabled from property name
+Get-NetComputer -Unconstrained | select -ExpandProperty name
+# Search for domain computers with unconstrained delegation enabled from property dnshostname
+Get-NetComputer -Unconstrained | select -ExpandProperty dnshostname
 ```
 **2. With AD Module:**
 ```powershell
