@@ -450,6 +450,10 @@ New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentL
 # Check if the ticket has been granted
 klist
 ```
+**Example:**
+
+![Main Logo](images/Example_SPN01.png 'Example03')
+
 **4. Export all tickets and Bruteforce the password:**
 ```powershell
 # Export all tickets using Mimikatz
