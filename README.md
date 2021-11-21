@@ -32,7 +32,7 @@ Last update: **21 Nov 2021**
         -  [Printer Bug](#printer-bug)
      -  [Constrained Delegation](#constrained-delegation)
   -  [Child to Parent using Trust Tickets](#Child-to-Parent-using-Trust-Tickets)
-  -  [Child to Parent using krbtgt hash](#Child-to-Parent-using-krbtgt-hash)
+  -  [Child to Parent using Krbtgt Hash](#Child-to-Parent-using-krbtgt-hash)
 
 ## Pre-requisites
 ### Using PowerView:
@@ -587,4 +587,4 @@ forged trust ticket.:**
 ls \\mcorp dc.corporate.local\c$
 ```
 
-### Child to Parent using krbtgt hash
+### Child to Parent using Krbtgt Hash
