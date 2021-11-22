@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **21 Nov 2021**
+Last update: **22 Nov 2021**
 ## TOC
 - [Pre-requisites](#pre-requisites)
 - [Enumeration](#enumeration)
