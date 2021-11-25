@@ -649,6 +649,8 @@ Link: [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
 ```powershell
 # Discovery (SPN Scanning)
 Get-SQLInstanceDomain
+# Discovery (SPN Scanning) with Info and Verbose mode
+Get-SQLInstanceDomain | Get-SQLServerinfo -Verbose
 # Check accessibility
 Get-SQLConnectionTestThreaded
 # Check accessibility
