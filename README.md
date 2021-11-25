@@ -644,3 +644,11 @@ forged trust ticket:**
 . .\PowerUpSQL.ps1
 ```
 Link: [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
+
+**1. Enumeration:**
+```powershell
+# discovery (SPN Scanning)
+Get-SQLInstanceDomain
+# discovery (SPN Scanning)
+Get-SQLInstanceDomain
+```
