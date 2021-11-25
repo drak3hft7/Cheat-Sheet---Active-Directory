@@ -660,8 +660,12 @@ Get-SQLInstanceDomain | Get-SQLConnectionTestThreaded -Verbose
 ```powershell
 # Searching Database Links
 Get-SQLServerLink -Instance dcorp-mssql -Verbose
+# Enumerating Database Links
+Get-SQLServerLinkCrawl -Instance dcorp-mssql -Verbose
 ```
 ```mysql
 # Searching Database Links
 select * from master..sysservers
+# Enumerating Database Links
+select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt",''select * from master..sysservers'')')
 ```
