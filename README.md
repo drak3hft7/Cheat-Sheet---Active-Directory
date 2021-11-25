@@ -656,3 +656,12 @@ Get-SQLConnectionTestThreaded
 # Check accessibility
 Get-SQLInstanceDomain | Get-SQLConnectionTestThreaded -Verbose
 ```
+**2. Database Links:**
+```powershell
+# Searching Database Links
+Get-SQLServerLink -Instance dcorp-mssql -Verbose
+```
+```mysql
+# Searching Database Links
+select * from master..sysservers
+```
