@@ -644,6 +644,7 @@ forged trust ticket:**
 . .\PowerUpSQL.ps1
 ```
 Link: [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
+
 Software: [HeidiSQL Client](https://github.com/HeidiSQL/HeidiSQL)
 
 **1. Enumeration:**
