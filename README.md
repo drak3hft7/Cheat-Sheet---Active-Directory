@@ -637,3 +637,10 @@ forged trust ticket:**
 ```
 
 # Trust Abuse MSSQL Servers
+
+#### Pre-requisites
+#### PowerUpSQL:
+```powershell
+. .\PowerUpSQL.ps1
+```
+Link: [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
