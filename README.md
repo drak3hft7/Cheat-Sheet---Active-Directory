@@ -647,8 +647,10 @@ Link: [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
 
 **1. Enumeration:**
 ```powershell
-# discovery (SPN Scanning)
+# Discovery (SPN Scanning)
 Get-SQLInstanceDomain
-# discovery (SPN Scanning)
-Get-SQLInstanceDomain
+# Check accessibility
+Get-SQLConnectionTestThreaded
+# Check accessibility
+Get-SQLInstanceDomain | Get-SQLConnectionTestThreaded -Verbose
 ```
