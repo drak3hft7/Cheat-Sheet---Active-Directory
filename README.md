@@ -58,7 +58,7 @@ Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
 Link: [AD Module](https://github.com/samratashok/ADModule)
 
-# Enumeration
+# Windows Defender
 
 ### Disable Windows Defender
 ```powershell
