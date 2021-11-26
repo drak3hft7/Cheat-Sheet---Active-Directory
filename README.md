@@ -65,6 +65,9 @@ Link: [AD Module](https://github.com/samratashok/ADModule)
 # Turn Off
 Set-MpPreference -DisableRealtimeMonitoring $true
 ```
+**Example:**
+
+![Main Logo](images/Example_Defender01.PNG 'ExampleDefender')
 
 # Enumeration
 
