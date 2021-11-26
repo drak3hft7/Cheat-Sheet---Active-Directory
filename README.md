@@ -2,9 +2,10 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **25 Nov 2021**
+Last update: **26 Nov 2021**
 ## TOC
 - [Pre-requisites](#pre-requisites)
+- [Windows Defender](#windows-defender)
 - [Enumeration](#enumeration)
   -  [Users Enumeration](#users-enumeration)
   -  [Domain Admins Enumeration](#domain-admins-enumeration)
@@ -56,6 +57,14 @@ Import-Module .\Microsoft.ActiveDirectory.Management.dll
 Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
 Link: [AD Module](https://github.com/samratashok/ADModule)
+
+# Enumeration
+
+### Disable Windows Defender
+```powershell
+# Turn Off
+Set-MpPreference -DisableRealtimeMonitoring $true
+```
 
 # Enumeration
 
