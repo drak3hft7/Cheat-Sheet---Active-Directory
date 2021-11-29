@@ -305,7 +305,7 @@ Invoke-UserHunter -CheckAccess
 #### Neo4j:
 Link: [Neo4j - Community Version](https://neo4j.com/download-center/#community)
 #### SharpHound:
-Link: [SharpHound](https://github.com/BloodHoundAD/SharpHound3)
+Link: [SharpHound](https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors)
 #### BloodHound:
 Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 
@@ -315,6 +315,14 @@ Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 .\neo4j.bat install-service
 # Start the service
 .\neo4j.bat start
+```
+
+**2. Run BloodHound ingestores to gather data and information about the current domain:**
+```powershell
+# Gather data and information
+. .\SharpHound.exe --CollectionMethod All
+# Gather data and information
+Invoke-BloodHound -CollectionMethod All -Verbose
 ```
 
 # Local Privilege Escalation
