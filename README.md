@@ -84,7 +84,8 @@ Get-NetUser -Username user01
 Get-NetUser | select cn                           
 # Grab the name from the list of users
 Get-NetUser | select name
-
+# Get actively logged users on a computer (needs local admin rights on the target)
+Get-NetLoggedon -ComputerName <servername>
 # List all properties
 Get-UserProperty                                      
 # Display when the passwords were set last time
