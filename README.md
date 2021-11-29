@@ -392,6 +392,7 @@ Enable-PSRemoting
 # Start a new session
 $sess = New-PSSession -ComputerName <Name>
 # Enter the Session
+Enter-PSSession $sess
 Enter-PSSession -ComputerName <Name>
 Enter-PSSession -ComputerName -Sessions <Sessionname>
 ```
