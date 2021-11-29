@@ -309,6 +309,14 @@ Link: [SharpHound](https://github.com/BloodHoundAD/SharpHound3)
 #### BloodHound:
 Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 
+**1. Install and start the neo4j service:**
+```powershell
+# Install the service
+.\neo4j.bat install-service
+# Start the service
+.\neo4j.bat start
+```
+
 # Local Privilege Escalation
 
 ### Using PowerUp:
