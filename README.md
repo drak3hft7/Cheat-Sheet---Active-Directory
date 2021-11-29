@@ -211,6 +211,8 @@ Get-NetFileServer
 Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC –Verbose
 # Enumerate Domain Shares the current user has access
 Find-DomainShare -CheckShareAccess
+# Find interesting shares in the domain, ignore default shares, and check access
+Find-DomainShare -ExcludeStandard -ExcludePrint -ExcludeIPC -CheckShareAccess
 ```
 
 ### OUI and GPO Enumeration
