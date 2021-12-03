@@ -2,11 +2,12 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **29 Nov 2021**
+Last update: **3 Dec 2021**
 ## Table of Contents
 - [Pre-requisites](#pre-requisites)
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
 - [Windows Defender](#windows-defender)
+- [Remote Desktop](#remote-desktop)
 - [Enumeration](#enumeration)
   -  [Users Enumeration](#users-enumeration)
   -  [Domain Admins Enumeration](#domain-admins-enumeration)
@@ -77,6 +78,14 @@ Set-MpPreference -DisableRealtimeMonitoring $true
 **Example:**
 
 ![Main Logo](images/Example_Defender01.PNG 'ExampleDefender')
+
+# Remote Desktop
+
+### Enable Remote Desktop
+```powershell
+# Turn On
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value 0
+```
 
 # Enumeration
 
