@@ -8,6 +8,9 @@ Last update: **3 Dec 2021**
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
 - [Windows Defender](#windows-defender)
 - [Remote Desktop](#remote-desktop)
+  -  [Enable Remote Desktop](#Enable-Remote-Desktop)
+  -  [Login with remote desktop](#login-with-remote-desktop)
+  -  [Login with remote desktop with folder sharing](#Login-with-remote-desktop-with-folder-sharing)
 - [Enumeration](#enumeration)
   -  [Users Enumeration](#users-enumeration)
   -  [Domain Admins Enumeration](#domain-admins-enumeration)
@@ -85,6 +88,18 @@ Set-MpPreference -DisableRealtimeMonitoring $true
 ```powershell
 # Turn On
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value 0
+```
+
+### Login with remote desktop
+```powershell
+# Login
+rdesktop 172.16.20.20 -d corporate -u username -p password
+```
+
+### Login with remote desktop with folder sharing 
+```powershell
+# Login
+rdesktop 172.16.20.20 -d corporate -u username -p password -r disk:sharename=//home/username/Desktop/Tools
 ```
 
 # Enumeration
