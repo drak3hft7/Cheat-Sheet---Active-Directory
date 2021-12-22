@@ -91,26 +91,25 @@ Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' 
 ```
 
 ### Login with remote desktop
-```powershell
+```bash
 # Login
 rdesktop 172.16.20.20 -d corporate -u username -p password
 ```
 
 ### Login with remote desktop with folder sharing 
-```powershell
+```bash
 # Login
 rdesktop 172.16.20.20 -d corporate -u username -p password -r disk:sharename=//home/username/Desktop/Tools
 ```
 
-
 ### Login with xfreerdp
-```powershell
+```bash
 # Login
 xfreerdp /u:username /p:password /v:172.16.20.20
 ```
 
 ### Login with xfreerdp with folder sharing 
-```powershell
+```bash
 # Login
 xfreerdp /u:username /p:password /v:172.16.20.20 /drive:/home/username/Desktop/Tools
 ```
