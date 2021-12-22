@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **3 Dec 2021**
+Last update: **22 Dec 2021**
 ## Table of Contents
 - [Pre-requisites](#pre-requisites)
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
@@ -100,6 +100,19 @@ rdesktop 172.16.20.20 -d corporate -u username -p password
 ```powershell
 # Login
 rdesktop 172.16.20.20 -d corporate -u username -p password -r disk:sharename=//home/username/Desktop/Tools
+```
+
+
+### Login with xfreerdp
+```powershell
+# Login
+xfreerdp /u:username /p:password /v:172.16.20.20
+```
+
+### Login with xfreerdp with folder sharing 
+```powershell
+# Login
+xfreerdp /u:username /p:password /v:172.16.20.20 /drive:/home/username/Desktop/Tools
 ```
 
 # Enumeration
