@@ -410,6 +410,8 @@ match (n:User {admincount:False}) MATCH p=allShortestPaths((n)-[r:AddMember*1..]
 match p=(m:Group)-[r:CanRDP]->(n:Computer) RETURN m.name, n.name ORDER BY m.name
 # Find what groups can reset passwords 
 match p=(m:Group)-[r:ForceChangePassword]->(n:User) RETURN m.name, n.name ORDER BY m.name
+# Find what groups have local admin rights
+match p=(m:Group)-[r:AdminTo]->(n:Computer) RETURN m.name, n.name ORDER BY m.name
 ```
 
 # Local Privilege Escalation
