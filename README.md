@@ -382,13 +382,21 @@ Invoke-BloodHound -CollectionMethod All -Verbose
 ### Gui-Graph Queries
 ```
 # Find All edges any owned user has on a computer
-MATCH p=shortestPath((m:User)-[r]->(b:Computer)) WHERE m.owned RETURN p
+match p=shortestPath((m:User)-[r]->(b:Computer)) WHERE m.owned RETURN p
 # Find All Users with an SPN/Find all Kerberoastable Users
-MATCH (n:User)WHERE n.hasspn=true
+match (n:User)WHERE n.hasspn=true
 # Find workstations a user can RDP into
 match p=(g:Group)-[:CanRDP]->(c:Computer) where g.objectid ENDS WITH '-513'  AND NOT c.operatingsystem CONTAINS 'Server' return p
 # Find servers a user can RDP into
 match p=(g:Group)-[:CanRDP]->(c:Computer) where  g.objectid ENDS WITH '-513'  AND c.operatingsystem CONTAINS 'Server' return p
+# Find all computers with Unconstrained Delegation
+match (c:Computer {unconstraineddelegation:true}) return c
+# Find users that logged in within the last 30 days
+match (u:User) WHERE u.lastlogon < (datetime().epochseconds - (30 * 86400)) and NOT u.lastlogon IN [-1.0, 0.0] RETURN u
+# Find all sessions any user in a specific domain
+match p=(m:Computer)-[r:HasSession]->(n:User {domain: "corporate.local"}) RETURN p
+# View all groups that contain the word 'administrators'
+match (n:Group) WHERE n.name CONTAINS "administrators" return n
 ```
 
 # Local Privilege Escalation
