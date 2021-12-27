@@ -364,6 +364,8 @@ Link: [SharpHound](https://github.com/BloodHoundAD/BloodHound/tree/master/Collec
 #### BloodHound:
 Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 
+![Title](images/bloodhound.png 'bloodhound')
+
 **1. Install and start the neo4j service:**
 ```powershell
 # Install the service
