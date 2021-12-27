@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **22 Dec 2021**
+Last update: **27 Dec 2021**
 ## Table of Contents
 - [Pre-requisites](#pre-requisites)
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
@@ -23,6 +23,7 @@ Last update: **22 Dec 2021**
   -  [Domain Forest Enumeration](#domain-forest-enumeration)
   -  [User Hunting](#user-hunting)
   -  [Enumeration with BloodHound](#enumeration-with-bloodhound)
+     -  [GUI/Graph Queries](#gui-graph-queries)
 - [Local Privilege Escalation](#local-privilege-escalation)
 - [Lateral Movement](#lateral-movement)
 - [Persistence](#persistence)
@@ -377,6 +378,8 @@ Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 # Gather data and information
 Invoke-BloodHound -CollectionMethod All -Verbose
 ```
+
+### GUI/Graph Queries
 
 # Local Privilege Escalation
 
