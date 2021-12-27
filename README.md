@@ -406,10 +406,10 @@ match (n:User {admincount:False}) MATCH p=allShortestPaths((n)-[r:AddMember*1..]
 
 ### Console Queries
 ```
-# Find All Users with an SPN
-match (n:User)WHERE n.hasspn=true return n
-# Find workstations a user can RDP into
-match p=(g:Group)-[:CanRDP]->(c:Computer) where g.objectid ENDS WITH '-513'  AND NOT c.operatingsystem CONTAINS 'Server' return p
+# Find what groups can RDP
+match p=(m:Group)-[r:CanRDP]->(n:Computer) RETURN m.name, n.name ORDER BY m.name
+# Find what groups can reset passwords 
+match p=(m:Group)-[r:ForceChangePassword]->(n:User) RETURN m.name, n.name ORDER BY m.name
 ```
 
 # Local Privilege Escalation
