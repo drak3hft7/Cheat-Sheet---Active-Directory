@@ -24,6 +24,7 @@ Last update: **27 Dec 2021**
   -  [User Hunting](#user-hunting)
   -  [Enumeration with BloodHound](#enumeration-with-bloodhound)
      -  [Gui-graph Queries](#gui-graph-queries)
+     -  [Console Queries](#console-queries)
 - [Local Privilege Escalation](#local-privilege-escalation)
 - [Lateral Movement](#lateral-movement)
 - [Persistence](#persistence)
@@ -392,15 +393,23 @@ match p=(g:Group)-[:CanRDP]->(c:Computer) where  g.objectid ENDS WITH '-513'  AN
 # Find all computers with Unconstrained Delegation
 match (c:Computer {unconstraineddelegation:true}) return c
 # Find users that logged in within the last 30 days
-match (u:User) WHERE u.lastlogon < (datetime().epochseconds - (30 * 86400)) and NOT u.lastlogon IN [-1.0, 0.0] RETURN u
+match (u:User) WHERE u.lastlogon < (datetime().epochseconds - (30 * 86400)) and NOT u.lastlogon IN [-1.0, 0.0] return u
 # Find all sessions any user in a specific domain
 match p=(m:Computer)-[r:HasSession]->(n:User {domain: "corporate.local"}) RETURN p
 # Find the active user sessions on all domain computers
-match p1=shortestPath(((u1:User)-[r1:MemberOf*1..]->(g1:Group))) MATCH p2=(c:Computer)-[*1]->(u1) RETURN p2
+match p1=shortestPath(((u1:User)-[r1:MemberOf*1..]->(g1:Group))) MATCH p2=(c:Computer)-[*1]->(u1) return p2
 # View all groups that contain the word 'administrators'
 match (n:Group) WHERE n.name CONTAINS "administrators" return n
-# Find if unprivileged users have rights to add members into groups:
-match (n:User {admincount:False}) MATCH p=allShortestPaths((n)-[r:AddMember*1..]->(m:Group)) RETURN p
+# Find if unprivileged users have rights to add members into groups
+match (n:User {admincount:False}) MATCH p=allShortestPaths((n)-[r:AddMember*1..]->(m:Group)) return p
+```
+
+### Console Queries
+```
+# Find All Users with an SPN
+match (n:User)WHERE n.hasspn=true return n
+# Find workstations a user can RDP into
+match p=(g:Group)-[:CanRDP]->(c:Computer) where g.objectid ENDS WITH '-513'  AND NOT c.operatingsystem CONTAINS 'Server' return p
 ```
 
 # Local Privilege Escalation
