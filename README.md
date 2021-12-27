@@ -380,7 +380,7 @@ Invoke-BloodHound -CollectionMethod All -Verbose
 ```
 
 ### Gui-Graph Queries
-```bash
+```
 # Find All edges any owned user has on a computer
 MATCH p=shortestPath((m:User)-[r]->(b:Computer)) WHERE m.owned RETURN p
 # Find All Users with an SPN/Find all Kerberoastable Users
