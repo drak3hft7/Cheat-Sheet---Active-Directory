@@ -397,6 +397,8 @@ match (u:User) WHERE u.lastlogon < (datetime().epochseconds - (30 * 86400)) and 
 match p=(m:Computer)-[r:HasSession]->(n:User {domain: "corporate.local"}) RETURN p
 # View all groups that contain the word 'administrators'
 match (n:Group) WHERE n.name CONTAINS "administrators" return n
+# Find if unprivileged users have rights to add members into groups:
+match (n:User {admincount:False}) MATCH p=allShortestPaths((n)-[r:AddMember*1..]->(m:Group)) RETURN p
 ```
 
 # Local Privilege Escalation
