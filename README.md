@@ -23,7 +23,7 @@ Last update: **27 Dec 2021**
   -  [Domain Forest Enumeration](#domain-forest-enumeration)
   -  [User Hunting](#user-hunting)
   -  [Enumeration with BloodHound](#enumeration-with-bloodhound)
-     -  [GUI-Graph Queries](#gui-graph-queries)
+     -  [Gui-graph Queries](#gui-graph-queries)
 - [Local Privilege Escalation](#local-privilege-escalation)
 - [Lateral Movement](#lateral-movement)
 - [Persistence](#persistence)
@@ -379,10 +379,16 @@ Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 Invoke-BloodHound -CollectionMethod All -Verbose
 ```
 
-### GUI-Graph Queries
-```text
+### Gui-Graph Queries
+```bash
 # Find All edges any owned user has on a computer
 MATCH p=shortestPath((m:User)-[r]->(b:Computer)) WHERE m.owned RETURN p
+# Find All Users with an SPN/Find all Kerberoastable Users
+MATCH (n:User)WHERE n.hasspn=true
+# Find workstations a user can RDP into
+match p=(g:Group)-[:CanRDP]->(c:Computer) where g.objectid ENDS WITH '-513'  AND NOT c.operatingsystem CONTAINS 'Server' return p
+# Find servers a user can RDP into
+match p=(g:Group)-[:CanRDP]->(c:Computer) where  g.objectid ENDS WITH '-513'  AND c.operatingsystem CONTAINS 'Server' return p
 ```
 
 # Local Privilege Escalation
