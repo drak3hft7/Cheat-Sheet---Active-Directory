@@ -23,7 +23,7 @@ Last update: **27 Dec 2021**
   -  [Domain Forest Enumeration](#domain-forest-enumeration)
   -  [User Hunting](#user-hunting)
   -  [Enumeration with BloodHound](#enumeration-with-bloodhound)
-     -  [GUI/Graph Queries](#gui-graph-queries)
+     -  [GUI-Graph Queries](#gui-graph-queries)
 - [Local Privilege Escalation](#local-privilege-escalation)
 - [Lateral Movement](#lateral-movement)
 - [Persistence](#persistence)
@@ -379,7 +379,11 @@ Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 Invoke-BloodHound -CollectionMethod All -Verbose
 ```
 
-### GUI/Graph Queries
+### GUI-Graph Queries
+```text
+# Find All edges any owned user has on a computer
+MATCH p=shortestPath((m:User)-[r]->(b:Computer)) WHERE m.owned RETURN p
+```
 
 # Local Privilege Escalation
 
