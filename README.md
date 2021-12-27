@@ -395,6 +395,8 @@ match (c:Computer {unconstraineddelegation:true}) return c
 match (u:User) WHERE u.lastlogon < (datetime().epochseconds - (30 * 86400)) and NOT u.lastlogon IN [-1.0, 0.0] RETURN u
 # Find all sessions any user in a specific domain
 match p=(m:Computer)-[r:HasSession]->(n:User {domain: "corporate.local"}) RETURN p
+# Find the active user sessions on all domain computers
+match p1=shortestPath(((u1:User)-[r1:MemberOf*1..]->(g1:Group))) MATCH p2=(c:Computer)-[*1]->(u1) RETURN p2
 # View all groups that contain the word 'administrators'
 match (n:Group) WHERE n.name CONTAINS "administrators" return n
 # Find if unprivileged users have rights to add members into groups:
