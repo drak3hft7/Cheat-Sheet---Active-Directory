@@ -43,6 +43,7 @@ Last update: **27 Dec 2021**
   -  [Child to Parent using Trust Tickets](#Child-to-Parent-using-Trust-Tickets)
   -  [Child to Parent using Krbtgt Hash](#Child-to-Parent-using-krbtgt-hash)
   -  [Across Forest using Trust Tickets](#Across-forest-using-trust-tickets)
+  -  [GenericAll Abused](#GenericAll-Abused)
 - [Trust Abuse MSSQL Servers](#trust-abuse-mssql-servers)
 - [Forest Persistence DCShadow](#Forest-Persistence-DCShadow)
 
