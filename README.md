@@ -788,6 +788,8 @@ forged trust ticket:**
 
 ### GenericAll Abused
 
+![Main Logo](images/Example_BloodHound_GenericAll.PNG 'Example_Generic')
+
 **1. Full control with GenericAll. Method to change the password:**
 ```powershell
 # User password change
