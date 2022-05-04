@@ -298,6 +298,8 @@ Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}
 Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "RDPusers"} 
 # Check for modify rights/permissions for the RDPUsers group
 Invoke-ACLScanner | select ObjectDN,ActiveDirectoryRights,IdentityReferenceName
+# Search of interesting ACL's for the current user
+Invoke-ACLScanner | Where-Object {$_.IdentityReference –eq [System.Security.Principal.WindowsIdentity]::GetCurrent().Name}
 ```
 
 ### Domain Trust Mapping
