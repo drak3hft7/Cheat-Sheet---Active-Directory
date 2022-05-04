@@ -296,6 +296,8 @@ Invoke-ACLScanner -ResolveGUIDs
 Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "user"}     
 # Check for modify rights/permissions for the RDPUsers group
 Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReference -match "RDPusers"} 
+# Check for modify rights/permissions for the RDPUsers group
+Invoke-ACLScanner | select ObjectDN,ActiveDirectoryRights,IdentityReferenceName
 ```
 
 ### Domain Trust Mapping
