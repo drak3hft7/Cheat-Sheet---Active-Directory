@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **04 May 2022**
+Last update: **06 Jul 2022**
 ## Table of Contents
 - [Pre-requisites](#pre-requisites)
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
@@ -271,8 +271,10 @@ Get-NetOU -FullData
 Get-NetOU "ouiexample" | %{Get-NetComputer -ADSpath $_}                     
 # Retrieve the list of GPOs present in the current domain
 Get-NetGPO
-# etrieve the list of GPOs present in the current domain with displayname
-Get-NetGPO| select displayname  
+# Retrieve the list of GPOs present in the current domain with displayname
+Get-NetGPO| select displayname
+# Get list of GPO in the target computer
+Get-NetGPO -ComputerName <ComputerName> | select displayname 
 # Enumerate GPO applied on the example OU
 Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                        
 ```
