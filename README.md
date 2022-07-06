@@ -264,13 +264,15 @@ Find-DomainShare -ExcludeStandard -ExcludePrint -ExcludeIPC -CheckShareAccess
 - **With PowerView:**
 ```powershell
 # Get the organizational units in a domain
-Get-NetOU                                                                   
+Get-NetOU
 # Get the organizational units in a domain with full data
 Get-NetOU -FullData                                                         
 # Get all computers from "ouiexample". Ouiexample --> organizational Units
 Get-NetOU "ouiexample" | %{Get-NetComputer -ADSpath $_}                     
 # Retrieve the list of GPOs present in the current domain
-Get-NetGPO                                                                  
+Get-NetGPO
+# etrieve the list of GPOs present in the current domain with displayname
+Get-NetGPO| select displayname  
 # Enumerate GPO applied on the example OU
 Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                        
 ```
