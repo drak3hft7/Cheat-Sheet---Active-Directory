@@ -265,6 +265,8 @@ Find-DomainShare -ExcludeStandard -ExcludePrint -ExcludeIPC -CheckShareAccess
 ```powershell
 # Get the organizational units in a domain
 Get-NetOU
+# Get the organizational units in a domain with name
+Get-NetOU | select name
 # Get the organizational units in a domain with full data
 Get-NetOU -FullData                                                         
 # Get all computers from "ouiexample". Ouiexample --> organizational Units
@@ -274,7 +276,11 @@ Get-NetGPO
 # Retrieve the list of GPOs present in the current domain with displayname
 Get-NetGPO| select displayname
 # Get list of GPO in the target computer
-Get-NetGPO -ComputerName <ComputerName> | select displayname 
+Get-NetGPO -ComputerName <ComputerName> | select displayname
+# Find users who have local admin rights over the machine
+Find-GPOComputerAdmin –Computername <ComputerName>
+# Get machines where the given user in member of a specific group
+Find-GPOLocation -Identity <user> -Verbose
 # Enumerate GPO applied on the example OU
 Get-NetGPO -ADSpath 'LDAP://cn={example},CN=example'                        
 ```
