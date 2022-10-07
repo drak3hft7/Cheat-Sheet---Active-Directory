@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **06 Jul 2022**
+Last update: **07 Oct 2022**
 ## Table of Contents
 - [Pre-requisites](#pre-requisites)
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
@@ -319,7 +319,9 @@ Invoke-ACLScanner | Where-Object {$_.IdentityReference –eq [System.Security.Pr
 # Get the list of all trusts within the current domain
 Get-NetDomainTrust                                                          
 # Get the list of all trusts within the indicated domain
-Get-NetDomainTrust -Domain us.domain.corporation.local                                    
+Get-NetDomainTrust -Domain us.domain.corporation.local
+# Get the list of all trusts for each domain it finds
+Get-DomainTrustMapping
 ```
 **Example:**
 
