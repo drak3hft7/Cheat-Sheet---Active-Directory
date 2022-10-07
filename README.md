@@ -56,6 +56,7 @@ Last update: **07 Oct 2022**
 - [PowerShell AMSI Bypass](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell)
 - [Neo4j - Community Version](https://neo4j.com/download-center/#community)
 - [SharpHound](https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors)
+  - [SharpHound Tutorial](https://bloodhound.readthedocs.io/en/latest/data-collection/sharphound.html)
 - [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 - [Rubeus](https://github.com/GhostPack/Rubeus)
 - [MS-RPRN](https://github.com/leechristensen/SpoolSample)
