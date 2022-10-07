@@ -62,7 +62,7 @@ Last update: **07 Oct 2022**
 - [MS-RPRN](https://github.com/leechristensen/SpoolSample)
 - [Kekeo](https://github.com/gentilkiwi/kekeo/)
 - [Mimikatz](https://github.com/gentilkiwi/mimikatz/)
-- [Kerbrute](https://github.com/ropnop/kerbrute/) Kerbrute is a popular enumeration tool used to brute force and enumerate valid active directory users by abusing Kerberos pre-authentication.
+- [Kerbrute](https://github.com/ropnop/kerbrute/)
 
 ## Pre-requisites
 ### Using PowerView:
