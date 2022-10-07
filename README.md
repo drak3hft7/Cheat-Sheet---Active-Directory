@@ -49,6 +49,7 @@ Last update: **07 Oct 2022**
 
 ## Tools and Scripts
 - [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
+  - [PowerView Tutorial](https://powersploit.readthedocs.io/en/latest/Recon/)
 - [PowerView Dev](https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
 - [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
 - [HeidiSQL Client](https://github.com/HeidiSQL/HeidiSQL)
