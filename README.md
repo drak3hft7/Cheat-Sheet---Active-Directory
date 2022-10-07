@@ -60,6 +60,7 @@ Last update: **07 Oct 2022**
 - [Rubeus](https://github.com/GhostPack/Rubeus)
 - [MS-RPRN](https://github.com/leechristensen/SpoolSample)
 - [Kekeo](https://github.com/gentilkiwi/kekeo/)
+- [Mimikatz](https://github.com/gentilkiwi/mimikatz/)
 
 ## Pre-requisites
 ### Using PowerView:
