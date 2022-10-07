@@ -47,6 +47,11 @@ Last update: **07 Oct 2022**
 - [Trust Abuse MSSQL Servers](#trust-abuse-mssql-servers)
 - [Forest Persistence DCShadow](#Forest-Persistence-DCShadow)
 
+## Tools and Scripts
+- [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
+- [PowerView Dev](https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
+- [AD Module](https://github.com/samratashok/ADModule)
+
 ## Pre-requisites
 ### Using PowerView:
 ```powershell
