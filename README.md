@@ -50,11 +50,16 @@ Last update: **07 Oct 2022**
 ## Tools and Scripts
 - [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
 - [PowerView Dev](https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
+- [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
+- [HeidiSQL Client](https://github.com/HeidiSQL/HeidiSQL)
 - [AD Module](https://github.com/samratashok/ADModule)
 - [PowerShell AMSI Bypass](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell)
 - [Neo4j - Community Version](https://neo4j.com/download-center/#community)
 - [SharpHound](https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors)
 - [BloodHound](https://github.com/BloodHoundAD/BloodHound)
+- [Rubeus](https://github.com/GhostPack/Rubeus)
+- [MS-RPRN](https://github.com/leechristensen/SpoolSample)
+- [Kekeo](https://github.com/gentilkiwi/kekeo/)
 
 ## Pre-requisites
 ### Using PowerView:
