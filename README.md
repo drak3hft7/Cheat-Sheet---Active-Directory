@@ -2,10 +2,11 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: **07 Oct 2022**
+Last update: **07 Dec 2022**
 ## Table of Contents
 - [Pre-requisites](#pre-requisites)
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
+- [PowerShell Bypass Execution Policy](#PowerShell-Bypass-Execution-Policy)
 - [Windows Defender](#windows-defender)
 - [Remote Desktop](#remote-desktop)
   -  [Enable Remote Desktop](#Enable-Remote-Desktop)
