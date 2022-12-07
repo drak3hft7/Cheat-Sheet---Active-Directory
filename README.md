@@ -100,7 +100,7 @@ function Disable-ExecutionPolicy {($ctx = $executioncontext.gettype().getfield("
 
 **Example:**
 
-![Main Logo](images/execution-policy.PNG 'ExampleExecutionPolicy')
+![Main Logo](images/Example_execution-policy 'ExampleExecutionPolicy')
 
 # Windows Defender
 
