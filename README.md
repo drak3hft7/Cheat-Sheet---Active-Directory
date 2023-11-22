@@ -60,6 +60,7 @@ Last update: **07 Dec 2022**
 - [SharpHound](https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors)
   - [SharpHound Tutorial](https://bloodhound.readthedocs.io/en/latest/data-collection/sharphound.html)
 - [BloodHound](https://github.com/BloodHoundAD/BloodHound)
+- [BloodHound-python](https://github.com/dirkjanm/BloodHound.py)
 - [Rubeus](https://github.com/GhostPack/Rubeus)
 - [MS-RPRN](https://github.com/leechristensen/SpoolSample)
 - [Kekeo](https://github.com/gentilkiwi/kekeo/)
@@ -413,6 +414,8 @@ Link: [Neo4j - Community Version](https://neo4j.com/download-center/#community)
 Link: [SharpHound](https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors)
 #### BloodHound:
 Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
+#### BloodHound-python:
+Link: [BloodHound-python](https://github.com/dirkjanm/BloodHound.py)
 
 ![Title](images/bloodhound.png 'bloodhound')
 
@@ -430,6 +433,13 @@ Link: [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 . .\SharpHound.exe --CollectionMethod All
 # Gather data and information
 Invoke-BloodHound -CollectionMethod All -Verbose
+```
+or
+
+**3. Run BloodHound-python ingestores to gather data and information about the current domain:**
+```bash
+# Gather data and information
+python3 bloodhound.py -u username -p 'password' -ns x.x.x.x -d xxxx.local -c All
 ```
 
 ### Gui-Graph Queries
