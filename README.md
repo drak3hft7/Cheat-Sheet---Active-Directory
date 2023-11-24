@@ -7,6 +7,7 @@ Last update: *22 Nov 2023*
 - [Pre-requisites](#pre-requisites)
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
 - [PowerShell Bypass Execution Policy](#PowerShell-Bypass-Execution-Policy)
+- [Evasion and obfuscation with PowerShellArmoury](#PowerShellArmoury)
 - [Windows Defender](#windows-defender)
 - [Remote Desktop](#remote-desktop)
   -  [Enable Remote Desktop](#Enable-Remote-Desktop)
@@ -52,6 +53,7 @@ Last update: *22 Nov 2023*
 - [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
   - [PowerView Tutorial](https://powersploit.readthedocs.io/en/latest/Recon/)
 - [PowerView Dev](https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1)
+- [PowerShellArmoury](https://github.com/cfalta/PowerShellArmoury)
 - [PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
 - [HeidiSQL Client](https://github.com/HeidiSQL/HeidiSQL)
 - [AD Module](https://github.com/samratashok/ADModule)
@@ -102,6 +104,17 @@ function Disable-ExecutionPolicy {($ctx = $executioncontext.gettype().getfield("
 **Example:**
 
 ![Main Logo](images/Example_execution-policy.PNG 'ExampleExecutionPolicy')
+
+# Evasion and obfuscation with PowerShellArmoury
+
+### Create an armoury
+```powershell
+# If you want to create an armoury with default settings (note: this will not obfuscate at all besides base64 encoding)
+. .\New-PSArmoury.ps1
+New-PSArmoury
+```
+
+Reference: [Here](https://github.com/cfalta/PowerShellArmoury)
 
 # Windows Defender
 
