@@ -112,6 +112,7 @@ function Disable-ExecutionPolicy {($ctx = $executioncontext.gettype().getfield("
 # If you want to create an armoury with default settings (note: this will not obfuscate at all besides base64 encoding)
 . .\New-PSArmoury.ps1
 New-PSArmoury
+cat -raw .\MyArmoury.ps1 | iex
 ```
 
 Reference: [Here](https://github.com/cfalta/PowerShellArmoury)
