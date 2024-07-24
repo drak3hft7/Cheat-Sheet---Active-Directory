@@ -2,7 +2,7 @@
 
 This cheat sheet contains common enumeration and attack methods for Windows Active Directory with the use of powershell.
 
-Last update: *24 Nov 2023*
+Last update: *24 Jul 2024*
 ## Table of Contents
 - [Pre-requisites](#pre-requisites)
 - [PowerShell AMSI Bypass](#PowerShell-AMSI-Bypass)
