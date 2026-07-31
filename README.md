@@ -59,6 +59,7 @@ Last update: *03 Apr 2026*
 - [AD Module](https://github.com/samratashok/ADModule)
 - [PowerShell AMSI Bypass](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell)
 - [Neo4j - Community Version](https://neo4j.com/download-center/#community)
+- [Darkmoon](https://github.com/ASCIT31/Dark-Moon) - Open source (GPL-3.0) autonomous AI penetration testing platform covering web, API, Active Directory and Kubernetes, with proof of exploitation.
 - [SharpHound](https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors)
   - [SharpHound Tutorial](https://bloodhound.readthedocs.io/en/latest/data-collection/sharphound.html)
 - [BloodHound](https://github.com/BloodHoundAD/BloodHound)
